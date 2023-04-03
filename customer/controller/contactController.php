@@ -7,10 +7,9 @@ if (isset($_GET['action'])) {
 //Kiểm tra hành động đang thực hiện
 switch ($action) {
     case '':
-        //Hiển thị danh sách khach hang
-        include_once 'models/aboutModel.php';
-        include_once 'views/about/index.php';
+        //Hiển thị danh sách san pham
+        include_once 'models/contactModel.php';
+        include_once 'views/contact/index.php';
         break;
-        
-   
+  
 }

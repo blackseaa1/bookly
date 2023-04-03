@@ -44,11 +44,8 @@
         case 'shop':
             include_once './controller/shopController.php';
             break;
-        case 'product':
-            include_once './controller/productController.php';
-            break;
-        case 'brand':
-            include_once './controller/brandController.php';
+        case 'contact':
+            include_once './controller/contactController.php';
             break;
         case 'logout':
             include_once './controller/userController.php';
@@ -65,6 +62,7 @@
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
