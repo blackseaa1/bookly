@@ -47,6 +47,9 @@
         case 'contact':
             include_once './controller/contactController.php';
             break;
+        case 'cart':
+            include_once './controller/cartController.php';
+            break;
         case 'logout':
             include_once './controller/userController.php';
             break;
@@ -99,7 +102,7 @@
             ]
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $(window).scroll(function() {
                 if ($(this).scrollTop()) {
@@ -110,7 +113,7 @@
                 }
             })
         });
-    </script>
+    </script> -->
     <!-- End Slider Script -->
 
 
