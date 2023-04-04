@@ -24,20 +24,21 @@
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Danh Mục</h1>
                 <ul class="list-unstyled templatemo-accordion">
-                    <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between cart-title h3 text-decoration-none category-button" href="#" data-category="all">
-                            Tất cả sản phẩm
-                        </a>
-                    </li>
-                    <?php
-                    foreach ($array['categories'] as $category_id => $category_name) {
-                        echo "  
-                    <li class='pb-3'>
-                    <a class='collapsed d-flex justify-content-between cart-title h3 text-decoration-none category-button' href='' data-category='$category_name'>$category_name</a>
-                    </li>
-                ";
-                    }
-                    ?>
+                    <form method="post" action="index.php?controller=shop&category=all&page=1">
+                        <li>
+                            <input type="hidden" name="all" value="all">
+                            <button class="fs-5 p-2 btn btn-ligh">Tất cả sản phẩm</button>
+                        </li>
+                    </form>
+
+                    <?php foreach ($array['categories'] as $category_id => $category_name) : ?>
+                        <form method="post" action="index.php?controller=shop&category=<?= $category_id ?>&page=1">
+                            <li>
+                                <input type="hidden" name="category" value="<?= $category_id ?>">
+                                <button class="fs-5 p-2 btn btn-ligh"><?= $category_name ?></button>
+                            </li>
+                        </form>
+                    <?php endforeach ?>
                 </ul>
             </div>
 
@@ -45,7 +46,7 @@
                 <div class="row flex-row-reverse">
                     <div class="col-md-6 pb-4">
                         <div class="d-flex flex-row-reverse">
-                            <form action="index.php?controller=shop" method="post" style="margin-right: 0 !important;" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                            <form action="index.php?controller=shop&category=<?= $array['category'] ?>" method="post" style="margin-right: 0 !important;" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                                 <div class="input-group">
                                     <div class="form-outline">
                                         <input value="<?= $array['search'] ?>" type="text" id="search" name="search" class="form-control search-orders" placeholder="Search">
@@ -72,7 +73,7 @@
                                 <div class='card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center'>
                                     <ul class='list-unstyled'>
                                         <li><a class='btn btn-success text-white mt-2' href='index.php?controller=shop&action=product_detail&product_id=$product[product_id]'><i class='far fa-eye'></i></a></li>
-                                        <li><a class='btn btn-success text-white mt-2' href='shop-single.html'><i class='fas fa-cart-plus'></i></a></li>
+                                        <li><a class='btn btn-success text-white mt-2' href='index.php?controller=cart&action=product_detail&product_id=$product[product_id]'><i class='fas fa-cart-plus'></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -111,7 +112,7 @@
                     <?php
                     for ($i = 1; $i <= $array['page']; $i++) {
                     ?>
-                        <form method="post" action="index.php?controller=shop&page=<?= $i ?>">
+                        <form method="post" action="index.php?controller=shop&category=<?= $array['category'] ?>&page=<?= $i ?>">
 
                             <ul class="pagination justify-content-center">
 
@@ -131,83 +132,3 @@
         </div>
     </div>
     <!-- End Content -->
-    <script>
-        // // Lọc sản phẩm khi click vào nút danh mục
-        // const categoryButtons = document.querySelectorAll('.category-button');
-        // const productCards = document.querySelectorAll('.product-card');
-        // const allProductsButton = document.querySelector('.all-products-button');
-
-        // categoryButtons.forEach(button => {
-        //     button.addEventListener('click', (event) => {
-        //         event.preventDefault();
-
-        //         // Lấy tên danh mục được lưu trữ trong data attribute của nút
-        //         const category = button.dataset.category;
-
-        //         // Hiển thị các sản phẩm của danh mục tương ứng và ẩn các sản phẩm khác
-        //         productCards.forEach(card => {
-        //             if (category === 'all' || card.dataset.category === category) {
-        //                 card.style.display = 'block';
-        //             } else {
-        //                 card.style.display = 'none';
-        //             }
-        //         });
-        //     });
-        // });
-
-        // allProductsButton.addEventListener('click', (event) => {
-        //     event.preventDefault();
-
-        //     // Hiển thị tất cả sản phẩm
-        //     productCards.forEach(card => {
-        //         card.style.display = 'block';
-        //     });
-        // });
-        // Lọc sản phẩm khi click vào nút danh mục
-        const categoryButtons = document.querySelectorAll('.category-button');
-        const productCards = document.querySelectorAll('.product-card');
-        const allProductsButton = document.querySelector('.all-products-button');
-        const productCategory = document.querySelector('.product-category');
-
-        // Hiển thị tên danh mục sản phẩm đang được chọn
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-
-                // Lấy tên danh mục được lưu trữ trong data attribute của nút
-                const category = button.dataset.category;
-                productCategory.innerHTML = category.toUpperCase();
-            });
-        });
-
-        // Hiển thị sản phẩm của danh mục tương ứng và ẩn các sản phẩm khác
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
-
-                // Lấy tên danh mục được lưu trữ trong data attribute của nút
-                const category = button.dataset.category;
-
-                // Hiển thị các sản phẩm của danh mục tương ứng và ẩn các sản phẩm khác
-                productCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        allProductsButton.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            // Hiển thị tất cả sản phẩm
-            productCards.forEach(card => {
-                card.style.display = 'block';
-            });
-
-            // Hiển thị tên danh mục sản phẩm là Tất cả sản phẩm
-            productCategory.innerHTML = 'Tất cả sản phẩm';
-        });
-    </script>
