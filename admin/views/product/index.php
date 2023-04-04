@@ -10,17 +10,17 @@
  					<div class="page-utilities">
  						<div class="row g-2 justify-content-start justify-content-md-end align-items-center">
  							<div class="col-auto">
- 								<form class="table-search-form row gx-1 align-items-center">
+ 								<form class="table-search-form row gx-1 align-items-center" method="post" action="index.php?controller=product">
  									<div class="col-auto">
- 										<input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+ 										<input value="<?= $array['search'] ?>" type="text" id="search" name="search" class="form-control" placeholder="Search">
  									</div>
  									<div class="col-auto">
- 										<button type="submit" class="btn app-btn-secondary">Search</button>
+ 										<button class="btn app-btn-secondary">Search</button>
  									</div>
  								</form>
 
  							</div><!--//col-->
- 							<div class="col-auto">
+ 							<!-- <div class="col-auto">
 
  								<select class="form-select w-auto">
  									<option selected value="option-1">All</option>
@@ -29,7 +29,7 @@
  									<option value="option-4">Last 3 months</option>
 
  								</select>
- 							</div>
+ 							</div> -->
  							<div class="col-auto">
  								<a class="btn app-btn-secondary bg-success text-white" href="index.php?controller=product&action=create_product">
  									+ Thêm Sản Phẩm Mới</a>
@@ -59,7 +59,7 @@
  									<tbody class="text-center">
  										<?php
 											$id = 1;
-											foreach ($products as $product) { ?>
+											foreach ($array['infor'] as $product) { ?>
  											<tr>
  												<td class="cell text-lg-start"> <?php echo $id++; ?></td>
  												<td class="cell text-lg-start">
@@ -107,19 +107,25 @@
 
  						</div><!--//app-card-body-->
  					</div><!--//app-card-->
- 					<nav class="app-pagination">
- 						<ul class="pagination justify-content-center">
- 							<li class="page-item disabled">
- 								<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
- 							</li>
- 							<li class="page-item active"><a class="page-link" href="#">1</a></li>
- 							<li class="page-item"><a class="page-link" href="#">2</a></li>
- 							<li class="page-item"><a class="page-link" href="#">3</a></li>
- 							<li class="page-item">
- 								<a class="page-link" href="#">Next</a>
- 							</li>
- 						</ul>
- 					</nav><!--//app-pagination-->
+ 					<nav class="app-pagination d-flex justify-content-center">
+ 						<?php
+							for ($i = 1; $i <= $array['page']; $i++) {
+							?>
+ 							<form method="post" action="index.php?controller=product&page=<?= $i ?>">
+
+ 								<ul class="pagination justify-content-center">
+
+ 									<li class="page-item"><input type="hidden" name="search" value="<?= $array['search'] ?>"></li>
+ 									<li class="page-item"> <input type="hidden" name="page" value="<?= $i ?>"></li>
+ 									<li class="page-item"><button class="page-link"><?= $i ?></button></li>
+ 									</li>
+ 								</ul>
+ 							</form>
+ 						<?php
+							}
+							?>
+
+ 					</nav>
 
  				</div><!--//tab-pane-->
  			</div><!--//tab-content-->

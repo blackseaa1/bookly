@@ -1,17 +1,39 @@
 <?php
 function index_product()
 {
+    $search = '';
+    if (isset($_POST['search'])) {
+        $search = $_POST['search'];
+    }
+    $page = 1;
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }
     include_once 'connect/openConnect.php';
+    // $sql = "SELECT * FROM tbl_category";
+    $sqlCount = "SELECT COUNT(*) AS count_record FROM tbl_product WHERE product_name LIKE '%$search%'";
+    $counts = mysqli_query($connect, $sqlCount);
+    foreach ($counts as $each) {
+        $countRecord = $each['count_record'];
+    }
+    $recordOnePage = 5;
+    $countPage = ceil($countRecord / $recordOnePage);
+    $start = ($page - 1) * $recordOnePage;
+    $end = 5;
     $sql = "SELECT tbl_product.*, tbl_category.category_name, tbl_author.author_name, tbl_publishing_company.publishing_company_name
     FROM tbl_product
     INNER JOIN tbl_category ON tbl_product.category_id = tbl_category.category_id
     INNER JOIN tbl_author ON tbl_product.author_id = tbl_author.author_id
-    INNER JOIN tbl_publishing_company ON tbl_product.publishing_company_id = tbl_publishing_company.publishing_company_id";
-
-
+    INNER JOIN tbl_publishing_company ON tbl_product.publishing_company_id = tbl_publishing_company.publishing_company_id
+    WHERE tbl_product.product_name LIKE '%$search%' OR tbl_category.category_name LIKE '%$search%' OR tbl_author.author_name LIKE '%$search%' OR tbl_publishing_company.publishing_company_name LIKE '%$search%' OR tbl_product.price LIKE '%$search%'
+    LIMIT $start, $end";
     $products = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';
-    return $products;
+    $array = array();
+    $array['search'] = $search;
+    $array['infor'] = $products;
+    $array['page'] = $countPage;
+    return $array;
 }
 function create_product()
 {
@@ -55,7 +77,7 @@ function store_product()
         } else {
             mysqli_query($connect, "INSERT INTO tbl_publishing_company (publishing_company_name) VALUES ('$publishing_company_name')");
             $publishing_company_id = mysqli_insert_id($connect);
-            $msg .= "Thêm $publishing_company_name thành công! ";
+            // $msg .= "Thêm $publishing_company_name thành công! ";
         }
 
         // Kiểm tra và thêm author_name vào bảng tbl_author
@@ -66,13 +88,13 @@ function store_product()
         } else {
             mysqli_query($connect, "INSERT INTO tbl_author (author_name) VALUES ('$author_name')");
             $author_id = mysqli_insert_id($connect);
-            $msg .= "Thêm tác giả $author_name thành công! ";
+            // $msg .= "Thêm tác giả $author_name thành công! ";
         }
 
         // Thêm sản phẩm vào database
         $sql = "INSERT INTO tbl_product (product_name, img, description, author_id, quantity, price, category_id, publishing_company_id, created_date)
         VALUES ('$product_name', '$img', '$description', '$author_id', '$quantity', '$price', '$category_id', '$publishing_company_id', now())";
-        move_uploaded_file($img_tmp, '../img/' . $img);
+        move_uploaded_file($img_tmp, __DIR__ . '/../img/uploads/' . $img);
         mysqli_query($connect, $sql);
         $msg .= "Thêm sản phẩm thành công!";
         echo "<script>alert('$msg');</script>";
@@ -165,7 +187,7 @@ function destroy_product()
 switch ($action) {
     case '':
         // Lay du lieu tu DB ve sau đó đổ dữ liệu lên mục views
-        $products = index_product();
+        $array = index_product();
         break;
     case 'create_product':
         $array = create_product();

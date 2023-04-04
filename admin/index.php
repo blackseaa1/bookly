@@ -42,14 +42,17 @@
         case 'customer':
             include_once './controller/customerController.php';
             break;
-        case 'order':
-            include_once './controller/orderController.php';
+        case 'brand':
+            include_once './controller/brandController.php';
+            break;
+        case 'publishing_company':
+            include_once './controller/publishing_companyController.php';
             break;
         case 'product':
             include_once './controller/productController.php';
             break;
-        case 'brand':
-            include_once './controller/brandController.php';
+        case 'order':
+            include_once './controller/orderController.php';
             break;
         case 'logout':
             include_once './controller/userController.php';
@@ -59,19 +62,19 @@
             break;
     }
     ?>
-	<!-- Javascript -->
-	<script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="./assets/js/jquery-1.11.0.min.js"></script>
-	<!-- Charts JS -->
-	<script src="./assets/plugins/chart.js/chart.min.js"></script>
-	<script src="./assets/js/index-charts.js"></script>
+    <!-- Javascript -->
+    <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/jquery-1.11.0.min.js"></script>
+    <!-- Charts JS -->
+    <script src="./assets/plugins/chart.js/chart.min.js"></script>
+    <script src="./assets/js/index-charts.js"></script>
 
-	<!-- Page Specific JS -->
-	<script src="./assets/js/app.js"></script>
-	<script src="./assets/js/portal.js"></script>
+    <!-- Page Specific JS -->
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/portal.js"></script>
 
-    
+
 </body>
 
 </html>

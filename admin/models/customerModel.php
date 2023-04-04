@@ -1,39 +1,37 @@
 <?php
-
-// function index(){
-//     $search='';
-//     if (isset($_POST['search'])){
-//         $search=$_POST['search'];
-//     }
-// //    $search=$_GET['search'];
-//     include_once 'connect/openConnect.php';
-//     $sql_search="select * from tbl_account where username like '%$search%'";
-//     $customers = mysqli_query($connect,$sql_search);
-//     $sqlCount="SELECT COUNT(*) as count_record FROM tbl_account";
-//     $counts = mysqli_query($connect,$sqlCount);
-//     foreach ($counts as $each){
-//         $countRecord=$each['count_record'];
-//     }
-//     $recordOnepage =3;
-//     $countpage=ceil($countRecord/$recordOnepage);
-// //    $sql_select= "select * from tbl_account";
-// //    $customers = mysqli_query($connect,$sql_select);
-//     include_once './connect/closeConnect.php';
-// //    $array = array();
-// //    $array['search'] = $search;
-// //    $array['infor'] = $brands;
-// //    $array['page'] = $countPage;
-// //    return $array;
-//     return $customers;
-// }
 function index_customer()
 {
+    $search = '';
+    if (isset($_POST['search'])) {
+        $search = $_POST['search'];
+    }
+    $page = 1;
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }
     include_once 'connect/openConnect.php';
-    $sql = "SELECT tbl_account.*, tbl_role.role_name AS role_name FROM tbl_account INNER JOIN tbl_role ON tbl_account.role_id = tbl_role.role_id";
+    // $sql = "SELECT * FROM tbl_category";
+    $sqlCount = "SELECT COUNT(*) AS count_record FROM tbl_account WHERE username LIKE '%$search%'";
+    $counts = mysqli_query($connect, $sqlCount);
+    foreach ($counts as $each) {
+        $countRecord = $each['count_record'];
+    }
+    $recordOnePage = 5;
+    $countPage = ceil($countRecord / $recordOnePage);
+    $start = ($page - 1) * $recordOnePage;
+    $end = 5;
+    $sql = "SELECT tbl_account.*, tbl_role.role_name AS role_name FROM tbl_account INNER JOIN tbl_role ON tbl_account.role_id = tbl_role.role_id WHERE tbl_account.username LIKE '%$search%'
+    OR tbl_account.fullname LIKE '%$search%' OR tbl_account.phone LIKE '%$search%' OR tbl_account.email  LIKE '%$search%' LIMIT $start, $end";
+
     $customers = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';
-    return $customers;
+    $array = array();
+    $array['search'] = $search;
+    $array['infor'] = $customers;
+    $array['page'] = $countPage;
+    return $array;
 }
+
 function create_customer()
 {
     include_once './connect/openConnect.php';
@@ -175,7 +173,7 @@ function destroy_customer()
 switch ($action) {
     case '':
         // Lay du lieu tu DB ve
-        $customers = index_customer();
+        $array = index_customer();
         break;
     case 'create_customer':
         $roles = create_customer();

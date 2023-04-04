@@ -8,10 +8,7 @@ if (isset($_GET['action'])){
 switch ($action){
     case '':
     // Tuc la cai nay se lam viec va lay du lieu ve
-    include_once 'views/oders/index.php';
     include_once 'models/orderModel.php';
+    include_once 'views/order/index.php';
     break;
 }
-
-
-?>
