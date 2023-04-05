@@ -35,38 +35,60 @@ session_start();
     }
     switch ($controller) {
         case '':
-            include_once './views/index.php';
+            if (isset($_SESSION['username'])) {
+                include_once './views/index.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
         case 'customer':
-            include_once './controller/customerController.php';
+            if (isset($_SESSION['username'])) {
+                include_once './controller/customerController.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
         case 'brand':
-            include_once './controller/brandController.php';
+            if (isset($_SESSION['username'])) {
+                include_once './controller/brandController.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
         case 'publishing_company':
-            include_once './controller/publishing_companyController.php';
+            if (isset($_SESSION['username'])) {
+                include_once './controller/publishing_companyController.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
         case 'product':
-            include_once './controller/productController.php';
+            if (isset($_SESSION['username'])) {
+                include_once './controller/productController.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
         case 'order':
-            include_once './controller/orderController.php';
+            if (isset($_SESSION['username'])) {
+                include_once './controller/orderController.php';
+            } else {
+                header('Location:index.php?controller=login');
+            }
             break;
-        case 'profile':
-            include_once './controller/profileController.php';
+        case 'login':
+            include_once './controller/loginController.php';
             break;
-            // case 'logout':
-            //     include_once './controller/profileController.php';
-            //     break;
         default:
-            echo "Chua co controller nao";
+            include_once 'views/404/index.php';
             break;
     }
+
     ?>
 
     <?php
-    if ($controller == 'profile') {
-        // Nếu là trang profile thì không bao gồm header và sidebar
+    if ($controller == 'login') {
+        // Nếu là trang login thì không bao gồm header và sidebar
     } else {
         echo "<header class='app-header fixed-top'>";
         include 'views/layout/header.php';

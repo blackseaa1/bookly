@@ -10,13 +10,19 @@ function loginAdmin()
     include_once 'connect/closeConnect.php';
 
     foreach ($users as $user) {
-        if($users['count_user'] == 0){
-
-        }e
+        if ($user['count_user'] == 0) {
+            return 0;
+        } elseif ($user['count_user'] == 1) {
+            $_SESSION['username'] = $username;
+            return 1;
+        }
     }
 }
 switch ($action) {
     case 'loginAcccess':
-        loginAdmin();
+        $test = loginAdmin();
+        break;
+    case 'logout':
+        session_destroy();
         break;
 }

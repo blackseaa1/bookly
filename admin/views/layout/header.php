@@ -32,7 +32,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="index.php?controller=logout">Log Out</a></li>
+                            <li><a class="dropdown-item" href="index.php?controller=login&action=logout">Log Out</a></li>
                         </ul>
                     </div><!--//app-user-dropdown-->
                 </div><!--//app-utilities-->
