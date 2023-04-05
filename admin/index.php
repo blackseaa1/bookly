@@ -74,7 +74,18 @@
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/portal.js"></script>
 
+    <script>
+        let menuLinks = document.querySelectorAll('.menu a');
 
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                menuLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

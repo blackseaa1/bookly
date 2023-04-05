@@ -50,6 +50,9 @@
         case 'cart':
             include_once './controller/cartController.php';
             break;
+        case 'account':
+            include_once './controller/accountController.php';
+            break;
         case 'logout':
             include_once './controller/userController.php';
             break;
