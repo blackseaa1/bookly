@@ -132,7 +132,7 @@ function update_customer()
                     WHERE account_id = $account_id";
             mysqli_query($connect, $sql);
             $msg = "Cập nhật người dùng thành công!";
-            echo "<script>alert('$msg');</script>";
+            echo "<script>alert('$msg');window.history.back();</script>";
         }
     }
     include_once './connect/closeConnect.php';
@@ -156,7 +156,7 @@ function update_password()
             mysqli_query($connect, $sql);
             include_once './connect/closeConnect.php';
             $msg = "Cập nhật mật khẩu người dùng thành công!";
-            echo "<script>alert('$msg');</script>";
+            echo "<script>alert('$msg');window.history.back();</script>";
         }
     }
 }

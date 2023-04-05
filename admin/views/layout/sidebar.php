@@ -1,6 +1,6 @@
 <div class="app-sidepanel" id="app-sidepanel">
     <div class="sidepanel-drop" id="sidepanel-drop"></div>
-    <div class="sidepanel-inner d-flex flex-column border-start border-success border-5">
+    <div class="sidepanel-inner d-flex flex-column">
         <a class="sidepanel-close d-xl-none" id="sidepanel-close" href="#">&times;</a>
         <div class="app-branding align-items-center mb-4">
             <a class="app-logo d-flex " href="index.php">
@@ -74,7 +74,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link menu-link" href="index.php?controller=order">
+                    <a id="menu-link" class="nav-link menu-link" href="index.php?controller=order">
                         <span class="nav-icon">
                             <svg class="bi bi-layout-text-window-reverse" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M13 6.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h5z"></path>
@@ -111,21 +111,39 @@
 </div><!--//app-sidepanel-->
 
 <script>
-    // Lấy danh sách các thẻ a trong menu
-    let menuLinks = document.querySelectorAll('.menu a');
+    let menuLinks = document.querySelectorAll('.menu-link');
+    let activeLink = localStorage.getItem('activeLink');
 
-    <?php
-    // Duyệt qua danh sách thẻ a và tạo đoạn mã JavaScript tương ứng để thêm class active vào thẻ a được chọn
-    foreach ($menuLinks as $index => $link) {
-        echo "menuLinks[$index].addEventListener('click', function() {
-                // Loại bỏ class active khỏi tất cả các thẻ a trong menu
-                menuLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                });
-
-                // Thêm class active vào thẻ a được chọn
-                this.classList.add('active');
-            });";
+    // Thêm class active vào liên kết được lưu trữ trong localStorage
+    if (activeLink) {
+        menuLinks.forEach(function(link) {
+            if (link.href === activeLink) {
+                link.classList.add('active');
+            }
+        });
     }
-    ?>
+
+    // Thêm sự kiện click vào tất cả các liên kết trong menu
+    menuLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            // Lưu trữ đường dẫn của liên kết đang được nhấp vào localStorage
+            localStorage.setItem('activeLink', link.href);
+
+            menuLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
+        });
+    });
+
+    // Kiểm tra giá trị trong localStorage và thêm class active vào liên kết tương ứng
+    window.addEventListener('load', function() {
+        let activeLink = localStorage.getItem('activeLink');
+        if (activeLink) {
+            let link = document.querySelector('a[href="' + activeLink + '"]');
+            if (link) {
+                link.classList.add('active');
+            }
+        }
+    });
 </script>

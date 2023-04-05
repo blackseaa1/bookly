@@ -11,4 +11,9 @@ switch ($action){
     include_once 'models/orderModel.php';
     include_once 'views/order/index.php';
     break;
+    case 'create_order':
+    // Tuc la cai nay se lam viec va lay du lieu ve
+    include_once 'models/orderModel.php';
+    include_once 'views/order/create.php';
+    break;
 }

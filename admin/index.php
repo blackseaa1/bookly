@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -22,12 +25,7 @@
 </head>
 
 <body class="app">
-    <header class="app-header fixed-top">
-        <?php
-        include 'views/layout/header.php';
-        include 'views/layout/sidebar.php';
-        ?>
-    </header>
+
     <?php
 
     $controller = '';
@@ -54,14 +52,29 @@
         case 'order':
             include_once './controller/orderController.php';
             break;
-        case 'logout':
-            include_once './controller/userController.php';
+        case 'profile':
+            include_once './controller/profileController.php';
             break;
+            // case 'logout':
+            //     include_once './controller/profileController.php';
+            //     break;
         default:
             echo "Chua co controller nao";
             break;
     }
     ?>
+
+    <?php
+    if ($controller == 'profile') {
+        // Nếu là trang profile thì không bao gồm header và sidebar
+    } else {
+        echo "<header class='app-header fixed-top'>";
+        include 'views/layout/header.php';
+        include 'views/layout/sidebar.php';
+        echo " </header>";
+    }
+    ?>
+
     <!-- Javascript -->
     <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -74,18 +87,8 @@
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/portal.js"></script>
 
-    <script>
-        let menuLinks = document.querySelectorAll('.menu a');
 
-        menuLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                menuLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-    </script>
 </body>
+
 
 </html>

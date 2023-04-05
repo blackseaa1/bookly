@@ -25,16 +25,9 @@ switch ($action) {
         break;
     case 'update_customer':
         include_once 'models/customerModel.php';
-        echo '<script>
-                    location.href = "index.php?controller=customer";
-                </script>';
-        // header('Location:index.php?controller=customer');
         break;
     case 'update_password':
         include_once 'models/customerModel.php';
-        echo '<script>
-                    location.href = "index.php?controller=customer";
-                </script>';
         break;
     case 'destroy_customer':
         include_once 'models/customerModel.php';

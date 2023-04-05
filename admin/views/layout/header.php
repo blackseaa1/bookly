@@ -28,11 +28,11 @@
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                             </svg></a>
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                            <li><a class="dropdown-item" href="../Project_1_admin/account.html">Account</a></li>
+                            <li><a class="dropdown-item" href="index.php?controller=profile">Account</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="../login.php">Log Out</a></li>
+                            <li><a class="dropdown-item" href="index.php?controller=logout">Log Out</a></li>
                         </ul>
                     </div><!--//app-user-dropdown-->
                 </div><!--//app-utilities-->
