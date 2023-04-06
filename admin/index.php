@@ -38,42 +38,49 @@ session_start();
             if (isset($_SESSION['username'])) {
                 include_once './views/index.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'customer':
             if (isset($_SESSION['username'])) {
                 include_once './controller/customerController.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'brand':
             if (isset($_SESSION['username'])) {
                 include_once './controller/brandController.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'publishing_company':
             if (isset($_SESSION['username'])) {
                 include_once './controller/publishing_companyController.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'product':
             if (isset($_SESSION['username'])) {
                 include_once './controller/productController.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'order':
             if (isset($_SESSION['username'])) {
                 include_once './controller/orderController.php';
             } else {
-                header('Location:index.php?controller=login');
+                header('Location:index.php?controller=login&action=login');
+            }
+            break;
+        case 'profile':
+            if (isset($_SESSION['username'])) {
+                include_once './controller/profileController.php';
+            } else {
+                header('Location:index.php?controller=login&action=login');
             }
             break;
         case 'login':

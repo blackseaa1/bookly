@@ -1,116 +1,71 @@
 <?php
-// function thêm sản phẩm lên giỏ hàng
-function add_to_cart()
-{
-    //        Lấy được id của sản phẩm vừa được thêm vào
-    // $product_id = $_GET['id'];
-    // //        Lưu lên session id sản phầm và số lượng mặc định là 1
-    // //        Kiểm tra xem giỏ hàng đã tồn tại hay chưa
-    // if (isset($_SESSION['cart'])) {
-    //     if (isset($_SESSION['cart'][$product_id])) {
-    //         $_SESSION['cart'][$product_id]++;
-    //     } else {
-    //         $_SESSION['cart'][$product_id] = 1;
-    //     }
-    // } else {
-    //     $_SESSION['cart'] = array();
-    //     $_SESSION['cart'][$product_id] = 1;
-    // }
-}
-//    function hiển thị giỏ hàng
 function view_cart()
 {
+    $total_Money = 0;
     include_once 'connect/openConnect.php';
-    $sqlCustomer = "SELECT * FROM customer";
-    $customers = mysqli_query($connect, $sqlCustomer);
-    $cart = array();
-    $infor = array();
-    if (isset($_SESSION['cart'])) {
-        foreach ($_SESSION['cart'] as $product_id => $amount) {
-            //                Lấy tên sp và giá theo product_id
-            $sql = "SELECT * FROM product WHERE id = '$product_id'";
-            $products = mysqli_query($connect, $sql);
-            foreach ($products as $product) {
-                $cart[$product_id]['product_name'] = $product['name'];
-                $cart[$product_id]['price'] = $product['price'];
-                $cart[$product_id]['amount'] = $amount;
+    // $sqlCount =
+    //     "SELECT COUNT(*) AS count_record FROM tbl_product";
+    // $counts = mysqli_query($connect, $sqlCount);
+    // foreach ($counts as $each) {
+    //     $countRecord = $each['count_record'];
+    // }
+    // $recordOnePage = 6; // Số lượng sản phẩm hiển thị trong 1 trang
+    // $countPage = ceil($countRecord / $recordOnePage);
+    // $start = ($page - 1) * $recordOnePage;
+    // $end = $recordOnePage;
+    $sql = "SELECT tbl_product.*, tbl_cart.cart_amount, tbl_cart.cart_bill
+    , tbl_category.category_name, tbl_author.author_name, tbl_publishing_company.publishing_company_name
+    FROM tbl_product
+    INNER JOIN tbl_category ON tbl_product.category_id = tbl_category.category_id
+    INNER JOIN tbl_author ON tbl_product.author_id = tbl_author.author_id
+    INNER JOIN tbl_cart ON tbl_product.product_id = tbl_cart.product_id
+    INNER JOIN tbl_publishing_company ON tbl_product.publishing_company_id = tbl_publishing_company.publishing_company_id
+    ";
+    $products = mysqli_query($connect, $sql);
+
+    // Lấy danh sách các danh mục sản phẩm
+    $carts = array();
+    $productsByCategory = array();
+    $sqlCarts = "SELECT tbl_cart.* FROM tbl_cart";
+    $resultCarts = mysqli_query($connect, $sqlCarts);
+    while ($cart = mysqli_fetch_assoc($resultCarts)) {
+        // $carts[$cart['product_id']] = $cart['product_id'];
+        $cart_name = $cart['product_id'];
+        $product = mysqli_fetch_assoc($products);
+        if ($product['product_id'] = $cart['product_id']) {
+            $productsByCategory[$cart_name][] = $product;
+            // $product=array_merge($product, $cart);
+            // $total_Money=count($cart);
+            // $total_Money=var_dump( $cart['cart_bill'] );
+            for ($i = 0; $i < 1; $i++) {
+                $total_Money += (int)$cart['cart_bill'];
             }
         }
     }
-    include_once 'connect/closeConnect.php';
-    $infor['customer'] = $customers;
-    $infor['cart'] = $cart;
-    return $infor;
-}
-//        function thay đổi số lượng trong giỏ hàng
-function change_amount()
-{
-    //Lấy product_id và amount
-    $infor = $_POST['amount'];
-    foreach ($infor as $product_id => $value) {
-        $_SESSION['cart'][$product_id] = $value;
-    }
-}
-//    function thêm đơn hàng lên db
-function add_order_to_db()
-{
-    $customer_id = $_POST['customer_id'];
-    $date_buy = date('Y-m-d');
-    $admin_id = $_SESSION['admin_id'];
-    $status = 0;
-    include_once 'connect/openConnect.php';
-    $sqlOrder = "INSERT INTO orders(date_buy, customer_id, admin_id, status) VALUES ('$date_buy', '$customer_id', '$admin_id', '$status')";
-    mysqli_query($connect, $sqlOrder);
-    $sqlOrderID = "SELECT MAX(id) as order_id FROM orders WHERE customer_id = '$customer_id'";
-    $orderIDs = mysqli_query($connect, $sqlOrderID);
-    foreach ($orderIDs as $value) {
-        $orderID = $value['order_id'];
-    }
-    foreach ($_SESSION['cart'] as $product_id => $amount) {
-        $sqlPriceProduct = "SELECT price FROM product WHERE id = '$product_id'";
-        $priceProduct = mysqli_query($connect, $sqlPriceProduct);
-        foreach ($priceProduct as $each) {
-            $price = $each['price'];
-        }
-        $sql = "INSERT INTO order_detail VALUES ('$orderID', '$product_id', '$price', '$amount')";
-        mysqli_query($connect, $sql);
-    }
-    include_once 'connect/closeConnect.php';
-    unset($_SESSION['cart']);
-}
-
-function delete_product_in_order()
-{
-    $product_id = $_GET['id'];
-    unset($_SESSION['cart'][$product_id]);
-}
-
-function delete_cart()
-{
-    unset($_SESSION['cart']);
-}
 
 
-//    Kiểm tra hành động hiện tại
+    // while ($product = mysqli_fetch_assoc($products)) {
+    //     $cart_name = $cart['product_id'];
+    //     // if($carts[$cart['product_id']] = $cart['product_id'])
+    //     $productsByCategory[$cart_name][] = $product;
+    // }
+    include_once './connect/closeConnect.php';
+    $array = array();
+    // $array['page'] = $countPage;
+    $array['infor'] = $productsByCategory;
+    $array['resultCarts'] = $resultCarts;
+    $array['total_Money'] = $total_Money;
+    $array['cart'] = $cart;
+    $array['carts'] = $carts; // Thêm thông tin danh mục sản phẩm vào mảng kết quả trả về
+    return $array;
+}
+
+//    Function lưu dữ liệu lên DB
+
 switch ($action) {
     case '':
-
-    case 'add_cart':
-        add_to_cart();
-        break;
-    case 'view_cart':
-        $infor = view_cart();
-        break;
-    case 'change_amount':
-        change_amount();
-        break;
-    case 'add_order_to_db':
-        add_order_to_db();
-        break;
-    case 'delete_product_in_order':
-        delete_product_in_order();
-        break;
-    case 'delete_cart':
-        delete_cart();
+        //Lấy dữ liệu từ DB về
+        $array = view_cart();
         break;
 }
+    

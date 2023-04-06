@@ -32,76 +32,48 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                foreach ($array['infor'] as $product_id => $cart_products) {
+                                    foreach ($cart_products as $product) {
+                                        echo "
                                 <tr>
-                                    <th scope="row">
-                                        <div class="d-flex align-items-center">
-                                            <img src="./assets/img/book1.jpg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
-                                            <div class="flex-column ms-4">
-                                                <p class="mb-2">Thinking, Fast and Slow</p>
-                                                <p class="mb-0">Daniel Kahneman</p>
+                                    <th scope='row'>
+                                        <div class='d-flex align-items-center'>
+                                            <img src='../admin/assets/img/uploads/$product[img]' class='img-fluid rounded-3' style='width: 120px;' alt='Book'>
+                                            <div class='flex-column ms-4'>
+                                                <p class='mb-2'>$product[product_name]</p>
+                                                <p class='mb-0'>$product[author_name]</p>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;">Digital</p>
+                                    <td class='align-middle'>
+                                        <p class='mb-0' style='font-weight: 500;'>$product[category_name]</p>
                                     </td>
-                                    <td class="align-middle">
-                                        <div class="d-flex flex-row">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
+                                    <td class='align-middle'>
+                                        <div class='d-flex flex-row'>
+                                            <button class='btn btn-link px-2' onclick='this.parentNode.querySelector('input[type=number]').stepDown()'>
+                                                <i class='fas fa-minus'></i>
                                             </button>
 
-                                            <input id="form1" min="0" name="quantity" value="2" type="number" class="form-control form-control-sm" style="width: 50px;" />
+                                            <input id='form1' min='0' name='quantity' value='$product[cart_amount]' type='number' class='form-control form-control-sm' style='width: 50px;' />
 
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <p class="mb-0" style="font-weight: 500;">$9.99</p>
-                                    </td>
-                                    <td class="align-middle">
-
-                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row" class="border-bottom-0">
-                                        <div class="d-flex align-items-center">
-                                            <img src="./assets/img/book1.jpg" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
-                                            <div class="flex-column ms-4">
-                                                <p class="mb-2">Homo Deus: A Brief History of Tomorrow</p>
-                                                <p class="mb-0">Yuval Noah Harari</p>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="align-middle border-bottom-0">
-                                        <p class="mb-0" style="font-weight: 500;">Paperback</p>
-                                    </td>
-                                    <td class="align-middle border-bottom-0">
-                                        <div class="d-flex flex-row">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-
-                                            <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" style="width: 50px;" />
-
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
+                                            <button class='btn btn-link px-2' onclick='this.parentNode.querySelector('input[type=number]').stepUp()'>
+                                                <i class='fas fa-plus'></i>
                                             </button>
                                         </div>
                                     </td>
-                                    <td class="align-middle border-bottom-0">
-                                        <p class="mb-0" style="font-weight: 500;">$13.50</p>
+                                    <td class='align-middle'>
+                                        <p class='mb-0' style='font-weight: 500;'>$product[cart_bill] đ</p>
                                     </td>
-                                    <td class="align-middle">
+                                    <td class='align-middle'>
 
-                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                        <a href='#!' class='text-danger'><i class='fas fa-trash fa-lg'></i></a>
 
                                     </td>
-                                </tr>
+                                </tr>";
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -112,19 +84,34 @@
                             <div class="row">
                                 <div class="d-flex justify-content-between" style="font-weight: 500;">
                                     <p class="mb-2">Tổng giá</p>
-                                    <p class="mb-2">$23.49</p>
+                                    <p class="mb-2"><?= $array['total_Money'] ?></p>
                                 </div>
 
-                                
+
                                 <hr class="my-4">
 
-                                <button type="button" class="btn btn-success btn-block btn-lg">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Thanh Toán</span>
-                                        <span>$26.48</span>
+                                <form action="index.php?controller=cart" method="post" style="margin-right: 0 !important;">
+                                    <div class="row">
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="inputname">Tên người nhận</label>
+                                            <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="inputemail">Số điện thoại</label>
+                                            <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
+                                        </div>
                                     </div>
-                                </button>
-
+                                    <div class="mb-3">
+                                        <label for="inputsubject">Địa chỉ</label>
+                                        <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
+                                    </div>
+                                    <hr class="my-4">
+                                    <button type="button" class="btn btn-success btn-block btn-lg">
+                                        <div class="d-flex justify-content-between">
+                                            <span>Thanh Toán</span>
+                                        </div>
+                                    </button>
+                                </form>
 
                             </div>
 
@@ -136,4 +123,3 @@
         </div>
     </section>
     <!-- Close Content -->
-

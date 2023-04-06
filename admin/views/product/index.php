@@ -51,7 +51,7 @@
  											<th>Image</th>
  											<th>Author</th>
  											<th class="text-lg-center">Quantity</th>
- 											<th>Prices</th>
+ 											<th class="text-lg-center">Prices</th>
  											<th class="text-lg-center">Category</th>
  											<th class="text-center">Operation</th>
  										</tr>
@@ -74,7 +74,7 @@
  												<td class="cell text-lg-center">
  													<span class="truncate-quantity"><?php echo $product['quantity']; ?></span>
  												</td>
- 												<td class="cell text-lg-start">
+ 												<td class="cell text-lg-center">
  													<span class="truncate-price p-2"><?php echo $product['price']; ?>đ</span>
  												</td>
  												<td class="cell text-lg-center">

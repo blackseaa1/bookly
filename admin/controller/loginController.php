@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
 // Kiem tra hanh dong dang thuc hien
 switch ($action) {
 
-    case '':
+    case 'login':
         if (isset($_SESSION['email'])) {
             header('Location:index.php');
         } else {
@@ -19,7 +19,7 @@ switch ($action) {
         include_once 'models/loginModel.php';
         if ($test == 0) {
             echo '<script>
-                    location.href = "index.php?controller=login";
+                    location.href = "index.php?controller=login&action=login";
                 </script>';
         } elseif ($test == 1) {
             echo '<script>
@@ -32,7 +32,7 @@ switch ($action) {
         include_once 'models/loginModel.php';
         //            quay về form đăng nhập
         echo '<script>
-                    location.href = "index.php?controller=login";
+                    location.href = "index.php?controller=login&action=login";
                 </script>';
         break;
 }

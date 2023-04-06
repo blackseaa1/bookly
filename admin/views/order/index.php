@@ -29,10 +29,10 @@
   									Download CSV
   								</a>
   							</div> -->
-  							<div class="col-auto">
+  							<!-- <div class="col-auto">
   								<a class="btn app-btn-secondary bg-success text-white" href="index.php?controller=order&action=create_order">
   									+ Thêm Đơn Hàng</a>
-  							</div>
+  							</div> -->
   						</div><!--//row-->
   					</div><!--//table-utilities-->
   				</div><!--//col-auto-->

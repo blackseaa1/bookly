@@ -10,31 +10,36 @@
                     </div>
                 </div>
                 <div class="card-body bg-white p-4  rounded">
-                    <form method="post" action="index.php?controller=customer&amp;action=update_customer">
-                        <input type="hidden" name="account_id" value="11">
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Họ Và Tên</label>
-                            <input class="form-control" name="fullname" type="text" placeholder="Full name" value="Đặng Hữu Hải">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Tên Người Dùng</label>
-                            <input class="form-control" name="username" type="text" placeholder="User Name" value="danghai24">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Địa Chỉ Email</label>
-                            <input class="form-control" name="email" type="email" placeholder="Email" value="bi@gmail.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Số Điện Thoại</label>
-                            <input class="form-control" name="phone" type="text" placeholder="Phone" value="0943278481">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black">Địa Chỉ</label>
-                            <input required="" class="form-control" name="address" type="text" placeholder="Address" value="0">
-                        </div>
-                        <button class="btn btn-success text-white fs-5" name="submit" type="submit">Cập Nhật</button>
+                    <?php
+                    foreach ($profiles as $profile) {
+                    ?>
+                        <h2 class=" text-center">Vai Trò: <span class="text-danger"><?= $profile['role_name'] ?></span></h2>
+                        <form method="post" action="index.php?controller=profile&action=update_profile">
+                            <input type="hidden" name="account_id" value="<?= $profile['account_id'] ?>">
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Họ Và Tên</label>
+                                <input class="form-control" name="fullname" type="text" placeholder="Full name" value="<?= $profile['fullname'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Tên Người Dùng</label>
+                                <input class="form-control" name="username" type="text" placeholder="User Name" value="<?= $profile['username'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Địa Chỉ Email</label>
+                                <input class="form-control" name="email" type="email" placeholder="Email" value="<?= $profile['email'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Số Điện Thoại</label>
+                                <input class="form-control" name="phone" type="text" placeholder="Phone" value="<?= $profile['phone'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-black">Địa Chỉ</label>
+                                <input required="" class="form-control" name="address" type="text" placeholder="Address" value="<?= $profile['address'] ?>">
+                            </div>
+                            <button class="btn btn-success text-white fs-5" name="submit" type="submit">Cập Nhật</button>
 
-                    </form>
+                        </form>
+
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faq2-heading-5">
@@ -44,8 +49,8 @@
                     </h2>
                     <div id="faq2-5" class="accordion-collapse collapse border-0" aria-labelledby="faq2-heading-5">
                         <div class="accordion-body text-start p4 card-body bg-white p-4 rounded">
-                            <form method="post" action="index.php?controller=customer&amp;action=update_password">
-                                <input type="hidden" name="account_id" value="11">
+                            <form method="post" action="index.php?controller=profile&action=update_password">
+                                <input type="hidden" name="account_id" value="<?= $profile['account_id'] ?>">
                                 <div class="mb-3">
                                     <label class="form-label  text-black" for="password">Mật Khẩu</label>
                                     <input class="form-control" id="password" name="password" type="password" placeholder="Password">
@@ -56,7 +61,9 @@
                                     <input class="form-control" id="repassword" name="repassword" type="password" placeholder="Enter The Password">
                                 </div>
                                 <button class="btn btn-success text-white fs-5" name="sbmpassword" type="submit">Cập Nhật</button>
-
+                            <?php
+                        }
+                            ?>
                             </form>
                         </div>
                     </div>

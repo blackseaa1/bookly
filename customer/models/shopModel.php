@@ -96,6 +96,24 @@ function product_detail()
     $array['authors'] = $authors;
     return $array;
 }
+//    function thêm sản phẩm lên giỏ hàng
+function add_to_cart()
+{
+    //        Lấy được id của sản phẩm vừa được thêm vào
+    $product_id = $_GET['id'];
+    //        Lưu lên session id sản phầm và số lượng mặc định là 1
+    //        Kiểm tra xem giỏ hàng đã tồn tại hay chưa
+    if (isset($_SESSION['cart'])) {
+        if (isset($_SESSION['cart'][$product_id])) {
+            $_SESSION['cart'][$product_id]++;
+        } else {
+            $_SESSION['cart'][$product_id] = 1;
+        }
+    } else {
+        $_SESSION['cart'] = array();
+        $_SESSION['cart'][$product_id] = 1;
+    }
+}
 
 
 

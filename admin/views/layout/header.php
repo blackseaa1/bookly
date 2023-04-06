@@ -22,7 +22,13 @@
 
                 <div class="app-utilities col-auto">
 
-                    <div class="app-utility-item app-user-dropdown dropdown">
+                    <div class="app-utility-item app-user-dropdown dropdown d-flex align-items-end">
+                        <?php
+                        $username = $_SESSION['username'];
+                        ?>
+                        <a href="index.php?controller=profile" class="pe-2 text-capitalize"><?php
+                        echo $username
+                        ?></a>
                         <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
