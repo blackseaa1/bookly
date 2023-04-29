@@ -16,10 +16,10 @@ function index_customer()
     foreach ($counts as $each) {
         $countRecord = $each['count_record'];
     }
-    $recordOnePage = 5;
+    $recordOnePage = 10;
     $countPage = ceil($countRecord / $recordOnePage);
     $start = ($page - 1) * $recordOnePage;
-    $end = 5;
+    $end = 10;
     $sql = "SELECT tbl_account.*, tbl_role.role_name AS role_name FROM tbl_account INNER JOIN tbl_role ON tbl_account.role_id = tbl_role.role_id WHERE tbl_account.username LIKE '%$search%'
     OR tbl_account.fullname LIKE '%$search%' OR tbl_account.phone LIKE '%$search%' OR tbl_account.email  LIKE '%$search%' LIMIT $start, $end";
 

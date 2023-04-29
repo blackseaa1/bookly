@@ -24,10 +24,10 @@
 
                     <div class="app-utility-item app-user-dropdown dropdown d-flex align-items-end">
                         <?php
-                        $username = $_SESSION['username'];
+                        $fullname = $_SESSION['fullname'];
                         ?>
                         <a href="index.php?controller=profile" class="pe-2 text-capitalize"><?php
-                        echo $username
+                        echo $fullname
                         ?></a>
                         <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">

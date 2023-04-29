@@ -51,11 +51,62 @@ function create_product()
     $array['publishing_companys'] = $publishing_companys;
     return $array;
 }
+// function store_product()
+// {
+//     $product_name = $_POST["product_name"];
+//     $img = $_FILES["img"]['name'];
+//     $img_tmp = $_FILES["img"]['tmp_name'];
+//     $description = $_POST["description"];
+//     $author_name = $_POST["author_name"];
+//     $quantity = $_POST["quantity"];
+//     $price = $_POST["price"];
+//     $category_id = $_POST["category_id"];
+//     $publishing_company_name = $_POST["publishing_company_name"];
+//     // Kiểm tra sản phẩm đã tồn tại trong database hay chưa
+//     include_once './connect/openConnect.php';
+//     $check_duplicate = mysqli_query($connect, "SELECT * FROM tbl_product WHERE product_name = '$product_name'");
+//     if (mysqli_num_rows($check_duplicate) > 0) {
+//         $msg = "Sản phẩm đã tồn tại! Vui lòng thêm lại";
+//         echo "<script>alert('$msg'); window.history.back();</script>";
+//     } else {
+//         // Kiểm tra và thêm publishing_company_name vào bảng tbl_publishing_company
+//         $check_company_duplicate = mysqli_query($connect, "SELECT * FROM tbl_publishing_company WHERE publishing_company_name = '$publishing_company_name'");
+//         if (mysqli_num_rows($check_company_duplicate) > 0) {
+//             $company = mysqli_fetch_assoc($check_company_duplicate);
+//             $publishing_company_id = $company['publishing_company_id'];
+//         } else {
+//             mysqli_query($connect, "INSERT INTO tbl_publishing_company (publishing_company_name) VALUES ('$publishing_company_name')");
+//             $publishing_company_id = mysqli_insert_id($connect);
+//             // $msg .= "Thêm $publishing_company_name thành công! ";
+//         }
+
+//         // Kiểm tra và thêm author_name vào bảng tbl_author
+//         $check_author_duplicate = mysqli_query($connect, "SELECT * FROM tbl_author WHERE author_name = '$author_name'");
+//         if (mysqli_num_rows($check_author_duplicate) > 0) {
+//             $author = mysqli_fetch_assoc($check_author_duplicate);
+//             $author_id = $author['author_id'];
+//         } else {
+//             mysqli_query($connect, "INSERT INTO tbl_author (author_name) VALUES ('$author_name')");
+//             $author_id = mysqli_insert_id($connect);
+//             // $msg .= "Thêm tác giả $author_name thành công! ";
+//         }
+
+//         // Thêm sản phẩm vào database
+//         $sql = "INSERT INTO tbl_product (product_name, img, description, author_id, quantity, price, category_id, publishing_company_id, created_date)
+//         VALUES ('$product_name', '$img', '$description', '$author_id', '$quantity', '$price', '$category_id', '$publishing_company_id', now())";
+//         move_uploaded_file($img_tmp, __DIR__ . '/../img/uploads/' . $img);
+//         mysqli_query($connect, $sql);
+//         $msg .= "Thêm sản phẩm thành công!";
+//         echo "<script>alert('$msg');</script>";
+//     }
+
+//     include_once './connect/closeConnect.php';
+// }
 function store_product()
 {
     $product_name = $_POST["product_name"];
-    $img = $_FILES["img"]['name'];
-    $img_tmp = $_FILES["img"]['tmp_name'];
+    $img = $_FILES["img"]["name"];
+    $img_tmp = $_FILES["img"]["tmp_name"];
     $description = $_POST["description"];
     $author_name = $_POST["author_name"];
     $quantity = $_POST["quantity"];
@@ -77,7 +128,6 @@ function store_product()
         } else {
             mysqli_query($connect, "INSERT INTO tbl_publishing_company (publishing_company_name) VALUES ('$publishing_company_name')");
             $publishing_company_id = mysqli_insert_id($connect);
-            // $msg .= "Thêm $publishing_company_name thành công! ";
         }
 
         // Kiểm tra và thêm author_name vào bảng tbl_author
@@ -88,20 +138,21 @@ function store_product()
         } else {
             mysqli_query($connect, "INSERT INTO tbl_author (author_name) VALUES ('$author_name')");
             $author_id = mysqli_insert_id($connect);
-            // $msg .= "Thêm tác giả $author_name thành công! ";
         }
+        $upload_dir = "assets/img/uploads/";
+        $img_path = $upload_dir . basename($img);
+        move_uploaded_file($img_tmp, $img_path);
 
-        // Thêm sản phẩm vào database
         $sql = "INSERT INTO tbl_product (product_name, img, description, author_id, quantity, price, category_id, publishing_company_id, created_date)
         VALUES ('$product_name', '$img', '$description', '$author_id', '$quantity', '$price', '$category_id', '$publishing_company_id', now())";
-        move_uploaded_file($img_tmp, __DIR__ . '/../img/uploads/' . $img);
         mysqli_query($connect, $sql);
-        $msg .= "Thêm sản phẩm thành công!";
+        $msg = "Thêm sản phẩm thành công!";
         echo "<script>alert('$msg');</script>";
     }
 
     include_once './connect/closeConnect.php';
 }
+
 function edit_product()
 {
     $product_id = $_GET['product_id'];
@@ -162,7 +213,9 @@ function update_product()
                     updated_date =   now(),
                     category_id = '$category_id'";
             if ($img) {
-                move_uploaded_file($img_tmp, '../img/' . $img);
+                $upload_dir = "assets/img/uploads/";
+                $img_path = $upload_dir . basename($img);
+                move_uploaded_file($img_tmp, $img_path);
                 $sql .= ", img = '$img'";
             }
             $sql .= " WHERE product_id = $product_id";

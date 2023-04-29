@@ -7,8 +7,12 @@ if (isset($_GET['action'])) {
 // Kiem tra hanh dong dang thuc hien
 switch ($action) {
 
+    case '':
+
+        include_once 'views/login/login.php';
+        break;
     case 'login':
-        if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['username'])) {
             header('Location:index.php');
         } else {
             //            Hiển thị form đăng nhập

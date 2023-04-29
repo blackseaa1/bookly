@@ -2,6 +2,22 @@
 Custom Css
 */
 
+.app-nav-tabs .nav-link.active {
+    color: #000000 !important;
+    border-bottom: 2px solid #15a362;
+    background-color: #82a09241;
+
+}
+
+.app-nav-tabs .nav-link.active:hover {
+    background: none;
+}
+
+.app-nav-tabs .nav-link:hover {
+    background: #edfdf6;
+    color: #15a362;
+}
+
 * header {
     position: unset;
     top: 0;
@@ -70,8 +86,7 @@ a.theme-link:hover {
     font-weight: 600;
     padding: 0.875rem 2.5rem;
     transition: all 0.4s ease-in-out;
-    border-radius: 2rem;
-    border: none
+    border: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

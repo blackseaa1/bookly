@@ -1,5 +1,6 @@
 <?php
 //    Lấy hành động đang thực hiện
+
 $action = '';
 if (isset($_GET['action'])) {
     $action = $_GET['action'];

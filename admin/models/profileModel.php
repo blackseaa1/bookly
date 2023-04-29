@@ -40,13 +40,14 @@ function update_profile()
             // Update account in database
             $sql = "UPDATE tbl_account SET 
                     fullname = '$fullname', 
-                    username = '$username', 
                     email = '$email',
                     address = '$address',
                     phone = '$phone', 
                     updated_date = now()
                     WHERE account_id = $account_id";
             mysqli_query($connect, $sql);
+            $_SESSION['fullname'] = $fullname;
+            $_SESSION['email'] = $email;
             $msg = "Cập nhật thông tin cá nhân thành công!";
             echo "<script>alert('$msg');window.history.back();</script>";
         }

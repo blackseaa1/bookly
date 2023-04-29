@@ -1,5 +1,5 @@
 <?php
-function view_cart()
+function cart_bill()
 {
     $total_Money = 0;
     include_once 'connect/openConnect.php';
@@ -65,7 +65,7 @@ function view_cart()
 switch ($action) {
     case '':
         //Lấy dữ liệu từ DB về
-        $array = view_cart();
+        $array = cart_bill();
         break;
 }
     

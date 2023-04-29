@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,9 @@
     <link rel="stylesheet" href="./asset/style/common/normalize.css">
     <link rel="stylesheet" href="./assets/style/common/base.css">
     <link rel="stylesheet" href="./asset/style/common/reset.css">
-    <link rel="stylesheet" href="./assets/style/custom.css">
+    <link rel="stylesheet" href="./assets/style/customm.css">
+    <link rel="stylesheet" href="./assets/style/login.css">
+
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="assets/font/fontawesome-pro-5.13.0-web/css/all.min.css">
@@ -52,6 +58,12 @@
             break;
         case 'account':
             include_once './controller/accountController.php';
+            break;
+        case 'login':
+            include_once './controller/loginController.php';
+            break;
+        case 'register':
+            include_once './controller/registerController.php';
             break;
         case 'logout':
             include_once './controller/userController.php';

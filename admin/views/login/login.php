@@ -3,8 +3,9 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card border-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
-                    <h5 class="card-title text-center mb-5 fw-light fs-3">Đăng Nhập</h5>
-                    <form method="post" action="index.php?controller=login&action=loginAcccess">
+                    <h5 class="card-title text-center mb-2 fw-light fs-1 text-success fw-bold">Welcome back!</h5>
+                    <h5 class="card-title text-center mb-4 fw-light">Trang Quản Lý</h5>
+                    <form method="post" action="index.php?controller=login&action=loginAccess">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="floatingInput" name="username" type="username" placeholder="name@example.com">
                             <label for="floatingInput">Tên người dùng</label>

@@ -54,28 +54,31 @@
 
                     <!-- Thêm đăng nhập đăng kí -->
                 </a>
-                <div class=""><a class="nav-icon position-relative text-decoration-none" href="./shop-cart.html">
-                    </a><a href="./login.html" class="btn btn-outline-success border border-success me-2">Đăng Nhập</a>
-                    <a href="./register.html" class="btn btn-success text-white">Đăng Kí</a>
-                </div>
+                <!-- <div class=""><a class="nav-icon position-relative text-decoration-none" href="./shop-cart.html"></a>
+                    <a href="index.php?controller=login" class="btn btn-outline-success border border-success me-2">Đăng Nhập</a>
+                    <a href="index.php?controller=register" class="btn btn-success text-white">Đăng Kí</a>
+                </div> -->
                 <!-- Kết thúc đăng nhập đăng kí -->
                 <!-- Người dùng  -->
-                <!-- <div class="flex-shrink-0 dropdown">
-                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                    class="rounded-circle">
-                            </a>
-                            <ul class="dropdown-menu text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div> -->
+                <div class="app-utility-item app-user-dropdown dropdown d-flex align-items-end">
+                    <?php
+                    $email = $_SESSION['email'];
+                    ?>
+                    <a href="index.php?controller=profile" class="pe-2 text-capitalize"><?php
+                                                                                        echo $email
+                                                                                        ?></a>
+                    <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        </svg></a>
+                    <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+                        <li><a class="dropdown-item" href="index.php?controller=profile">Account</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="index.php?controller=login&action=logout">Log Out</a></li>
+                    </ul>
+                </div>
                 <!-- Kết thúc người dùng -->
             </div>
         </div>

@@ -17,10 +17,10 @@ function index_publishing_company()
     foreach ($counts as $each){
         $countRecord = $each['count_record'];
     }
-    $recordOnePage = 5;
+    $recordOnePage = 10;
     $countPage = ceil($countRecord / $recordOnePage);
     $start = ($page - 1) * $recordOnePage;
-    $end = 5;
+    $end = 10   ;
     $sql = "SELECT * FROM tbl_publishing_company WHERE publishing_company_name LIKE '%$search%' LIMIT $start, $end";
     $publishing_companys = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';

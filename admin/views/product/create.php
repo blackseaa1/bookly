@@ -67,7 +67,7 @@
 						</div>
 						<div class="mb-3">
 							<label class="form-label text-black" for="price">Giá</label>
-							<input required class="form-control" id="price" name="price" type="text">
+							<input required class="form-control" id="price" name="price" type="number">
 						</div>
 						<div class="mb-3">
 							<label class="form-label text-black" for="quantity">Số lượng</label>

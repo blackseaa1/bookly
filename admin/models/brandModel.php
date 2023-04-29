@@ -17,10 +17,10 @@ function index_category()
     foreach ($counts as $each){
         $countRecord = $each['count_record'];
     }
-    $recordOnePage = 5;
+    $recordOnePage = 10;
     $countPage = ceil($countRecord / $recordOnePage);
     $start = ($page - 1) * $recordOnePage;
-    $end = 5;
+    $end = 10;
     $sql = "SELECT * FROM tbl_category WHERE category_name LIKE '%$search%' LIMIT $start, $end";
     $categorys = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';

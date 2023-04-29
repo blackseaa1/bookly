@@ -8,18 +8,22 @@ if (isset($_GET['action'])) {
 switch ($action) {
     case '':
         include_once 'models/shopModel.php';
-        include_once 'views/shop/index.php';
+        include_once 'views/shop/index.php';    
         break;
     case 'product_detail':
         include_once 'models/shopModel.php';
         include_once 'views/shop/product_detail.php';
         break;
-        // case 'store_category':
-        //     include_once 'models/brandModel.php';
-        //     echo '<script>
-        //                 location.href = "index.php?controller=brand";
-        //             </script>';
-        //     break;
+    case 'add_cart':
+        include_once 'models/shopModel.php';
+        echo '<script>
+                        window.history.back();
+                    </script>';
+        break;
+    case 'view_cart':
+        include_once 'models/shopModel.php';
+        include_once 'views/cart/index.php';
+        break;
         // case 'edit_category':
         //     include_once 'models/brandModel.php';
         //     include_once 'views/brands/edit.php';

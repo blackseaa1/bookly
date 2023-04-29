@@ -21,10 +21,6 @@
                                 <input class="form-control" name="fullname" type="text" placeholder="Full name" value="<?= $profile['fullname'] ?>">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label  text-black">Tên Người Dùng</label>
-                                <input class="form-control" name="username" type="text" placeholder="User Name" value="<?= $profile['username'] ?>">
-                            </div>
-                            <div class="mb-3">
                                 <label class="form-label  text-black">Địa Chỉ Email</label>
                                 <input class="form-control" name="email" type="email" placeholder="Email" value="<?= $profile['email'] ?>">
                             </div>
