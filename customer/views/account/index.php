@@ -1,4 +1,20 @@
-<div class="container h-100 py-5">
+<!-- Modal -->
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="w-100 pt-1 mb-5 text-right">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                <button type="submit" class="input-group-text bg-success text-light">
+                    <i class="fa fa-fw fa-search text-white"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container py-5">
     <div class="row gutters">
         <?php
         include 'views/layout/sidebar_account.php';
@@ -6,31 +22,34 @@
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
                 <div class="card-body bg-white p-4  rounded">
-                    <form method="post" action="index.php?controller=customer&amp;action=update_customer">
-                        <input type="hidden" name="account_id" value="11">
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Họ Và Tên</label>
-                            <input class="form-control" name="fullname" type="text" placeholder="Full name" value="Đặng Hữu Hải">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Tên Người Dùng</label>
-                            <input class="form-control" name="username" type="text" placeholder="User Name" value="danghai24">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Địa Chỉ Email</label>
-                            <input class="form-control" name="email" type="email" placeholder="Email" value="bi@gmail.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label  text-black">Số Điện Thoại</label>
-                            <input class="form-control" name="phone" type="text" placeholder="Phone" value="0943278481">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black">Địa Chỉ</label>
-                            <input required="" class="form-control" name="address" type="text" placeholder="Address" value="0">
-                        </div>
-                        <button class="btn btn-success text-white fs-5" name="submit" type="submit">Cập Nhật</button>
+                    <?php
+                    foreach ($profiles as $profile) {
+                    ?>
+                        <form method="post" action="index.php?controller=account&action=update_profile">
+                            <input type="hidden" name="account_id" value="<?= $profile['account_id'] ?>">
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Họ Và Tên</label>
+                                <input class="form-control" name="fullname" type="text" placeholder="Full name" value="<?= $profile['fullname'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Tên Người Dùng</label>
+                                <input class="form-control" name="username" type="text" placeholder="User Name" value="<?= $profile['username'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Địa Chỉ Email</label>
+                                <input class="form-control" name="email" type="email" placeholder="Email" value="<?= $profile['email'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label  text-black">Số Điện Thoại</label>
+                                <input class="form-control" name="phone" type="text" placeholder="Phone" value="<?= $profile['phone'] ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-black">Địa Chỉ</label>
+                                <input required="" class="form-control" name="address" type="text" placeholder="Address" value="<?= $profile['address'] ?>">
+                            </div>
+                            <button class="btn btn-success text-white fs-5" name="submit" type="submit">Cập Nhật</button>
 
-                    </form>
+                        </form>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="faq2-heading-5">
@@ -40,8 +59,9 @@
                     </h2>
                     <div id="faq2-5" class="accordion-collapse collapse border-0" aria-labelledby="faq2-heading-5">
                         <div class="accordion-body text-start p4 card-body bg-white p-4 rounded">
-                            <form method="post" action="index.php?controller=customer&amp;action=update_password">
-                                <input type="hidden" name="account_id" value="11">
+                            <form method="post" action="index.php?controller=account&action=update_password">
+                                <input type="hidden" name="account_id" value="<?= $profile['account_id'] ?>">
+
                                 <div class="mb-3">
                                     <label class="form-label  text-black" for="password">Mật Khẩu</label>
                                     <input class="form-control" id="password" name="password" type="password" placeholder="Password">
@@ -54,79 +74,13 @@
                                 <button class="btn btn-success text-white fs-5" name="sbmpassword" type="submit">Cập Nhật</button>
 
                             </form>
+                        <?php
+                    }
+                        ?>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card-body">
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h6 class="mb-2 text-primary">Personal Details</h6>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input class="form-control" id="fullName" type="text" placeholder="Enter full name">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="eMail">Email</label>
-                        <input class="form-control" id="eMail" type="email" placeholder="Enter email ID">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input class="form-control" id="phone" type="text" placeholder="Enter phone number">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="website">Website URL</label>
-                        <input class="form-control" id="website" type="url" placeholder="Website url">
-                    </div>
-                </div>
             </div>
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h6 class="mt-3 mb-2 text-primary">Address</h6>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="Street">Street</label>
-                        <input class="form-control" id="Street" type="name" placeholder="Enter Street">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="ciTy">City</label>
-                        <input class="form-control" id="ciTy" type="name" placeholder="Enter City">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="sTate">State</label>
-                        <input class="form-control" id="sTate" type="text" placeholder="Enter State">
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="zIp">Zip Code</label>
-                        <input class="form-control" id="zIp" type="text" placeholder="Zip Code">
-                    </div>
-                </div>
-            </div>
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="text-right">
-                        <button class="btn btn-secondary" id="submit" name="submit" type="button">Cancel</button>
-                        <button class="btn btn-primary" id="submit" name="submit" type="button">Update</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-            </div>
-
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
 switch ($action) {
 
     case 'login':
-        if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['username'])) {
             header('Location:index.php');
         } else {
             //            Hiển thị form đăng nhập

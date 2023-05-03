@@ -2,6 +2,12 @@
 Custom Css
 */
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .app-nav-tabs .nav-link.active {
     color: #000000 !important;
     border-bottom: 2px solid #15a362;
@@ -425,3 +431,4 @@ a.theme-link:hover {
         width: 400px
     }
 }
+

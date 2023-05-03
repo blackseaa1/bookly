@@ -259,3 +259,4 @@ switch ($action) {
         destroy_product();
         break;
 }
+

@@ -7,7 +7,7 @@
                     <h5 class="card-title text-center mb-4 fw-light">Trang Quản Lý</h5>
                     <form method="post" action="index.php?controller=login&action=loginAccess">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="floatingInput" name="username" type="username" placeholder="name@example.com">
+                            <input class="form-control" id="floatingInput" name="username" type="text" placeholder="username">
                             <label for="floatingInput">Tên người dùng</label>
                         </div>
                         <div class="form-floating mb-3">

@@ -57,10 +57,11 @@
                                     <input class="form-control" id="repassword" name="repassword" type="password" placeholder="Enter The Password">
                                 </div>
                                 <button class="btn btn-success text-white fs-5" name="sbmpassword" type="submit">Cập Nhật</button>
+
+                            </form>
                             <?php
                         }
                             ?>
-                            </form>
                         </div>
                     </div>
                 </div>

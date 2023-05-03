@@ -1,5 +1,7 @@
 <?php
+session_name('admin_session');
 session_start();
+
 
 ?>
 <!doctype html>
@@ -97,16 +99,18 @@ session_start();
     <?php
     if ($controller == 'login') {
         // Nếu là trang login thì không bao gồm header và sidebar
+    } else if ($controller == 'order' && $action == 'shop_order') {
+        // Nếu là trang shop_order thì không bao gồm header và sidebar
     } else {
         echo "<header class='app-header fixed-top'>";
         include 'views/layout/header.php';
         include 'views/layout/sidebar.php';
         echo " </header>";
     }
+
     ?>
 
     <!-- Javascript -->
-    <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/jquery-1.11.0.min.js"></script>
     <!-- Charts JS -->

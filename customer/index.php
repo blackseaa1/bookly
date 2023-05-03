@@ -1,5 +1,8 @@
 <?php
+session_name('user_session');
 session_start();
+print_r($_SESSION);
+
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +57,13 @@ session_start();
             include_once './controller/contactController.php';
             break;
         case 'cart':
-            include_once './controller/cartController.php';
+            if (isset($_SESSION['account_id'])) {
+                include_once './controller/cartController.php';
+            } else {
+                $msg = "Vui lòng đăng nhập để xem rỏ hàng!";
+                echo "<script>alert('$msg');</script>";
+                echo '<script>location.href = "index.php?controller=login&action=login";</script>';
+            }
             break;
         case 'account':
             include_once './controller/accountController.php';
@@ -80,7 +89,6 @@ session_start();
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/templatemo.js"></script>
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->

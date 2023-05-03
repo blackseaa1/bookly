@@ -74,7 +74,7 @@
                                 <div class='card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center'>
                                     <ul class='list-unstyled'>
                                         <li><a class='btn btn-success text-white mt-2' href='index.php?controller=shop&action=product_detail&product_id=$product[product_id]'><i class='far fa-eye'></i></a></li>
-                                        <li><a class='btn btn-success text-white mt-2' href='index.php?controller=shop&action=add_cart&product_id=$product[product_id]'><i class='fas fa-cart-plus'></i></a></li>
+                                        <li><a class='btn btn-success text-white mt-2' href='index.php?controller=cart&action=add_cart&product_id=$product[product_id]'><i class='fas fa-cart-plus'></i></a></li>
                                     </ul>
                                 </div>
                             </div>

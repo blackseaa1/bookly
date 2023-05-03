@@ -29,10 +29,10 @@
   									Download CSV
   								</a>
   							</div> -->
-  							<!-- <div class="col-auto">
+  							<div class="col-auto">
   								<a class="btn app-btn-secondary bg-success text-white" href="index.php?controller=order&action=create_order">
   									+ Thêm Đơn Hàng</a>
-  							</div> -->
+  							</div>
   						</div><!--//row-->
   					</div><!--//table-utilities-->
   				</div><!--//col-auto-->
@@ -56,24 +56,57 @@
   									<thead>
   										<tr>
   											<th class="cell">Order</th>
-  											<th class="cell">Product</th>
   											<th class="cell">Customer</th>
-  											<th class="cell">Date</th>
+  											<th class="cell">Address</th>
+  											<th class="cell">Order Date</th>
   											<th class="cell">Status</th>
   											<th class="cell">Total</th>
   											<th class="cell"></th>
   										</tr>
   									</thead>
   									<tbody>
-  										<tr>
-  											<td class="cell">#15346</td>
-  											<td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget volutpat erat</span></td>
-  											<td class="cell">John Sanders</td>
-  											<td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span></td>
-  											<td class="cell"><span class="badge bg-success">Paid</span></td>
-  											<td class="cell">$259.35</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
+  										<?php
+											foreach ($array['infor'] as $order) { ?>
+  											<tr>
+  												<td class="cell"><?= $order['order_id'] ?></td>
+  												<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
+  												<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
+  												<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
+  												<td class="cell">
+  													<?php
+														if ($order['order_status'] == '0') {
+														?>
+  														<span class="badge bg-warning">
+  															Pending
+  														</span>
+  													<?php
+														} elseif ($order['order_status'] == '1') {
+														?>
+  														<span class="badge bg-success">
+  															Paid
+  														</span>
+  													<?php
+														} elseif ($order['order_status'] == '2') {
+														?>
+  														<span class="badge bg-danger">
+  															Cancelled
+  														</span>
+  													<?php
+														}
+														?>
+
+  												</td>
+  												<td class="cell"><?php echo $order['order_total']; ?> đ</td>
+  												<td class="cell text-center">
+  													<a href="index.php?controller=order&action=edit_order&order_id=<?= $order['order_id'] ?>" class="btn-sm app-btn-secondary">View</a>
+  													<a class="btn-sm app-btn-secondary" onclick="return confirm('Bạn có muốn xóa đơn *<?= $order['order_recipient_name'] ?>* không?')" href="index.php?controller=order&action=delete_order&order_id=<?= $order['order_id'] ?>">
+  														Delete
+  													</a>
+  												</td>
+  											</tr>
+  										<?php
+											}
+											?>
 
   									</tbody>
   								</table>
@@ -81,7 +114,7 @@
 
   						</div><!--//app-card-body-->
   					</div><!--//app-card-->
-  					<!-- <nav class="app-pagination d-flex justify-content-center">
+  					<nav class="app-pagination d-flex justify-content-center">
   						<?php
 							for ($i = 1; $i <= $array['page']; $i++) {
 							?>
@@ -99,7 +132,7 @@
 							}
 							?>
 
-  					</nav> -->
+  					</nav>
 
   				</div><!--//tab-pane-->
 
@@ -108,132 +141,267 @@
   						<div class="app-card-body">
   							<div class="table-responsive">
 
-  								<table class="table mb-0 text-left">
+  								<table class="table app-table-hover mb-0 text-left">
   									<thead>
   										<tr>
   											<th class="cell">Order</th>
-  											<th class="cell">Product</th>
   											<th class="cell">Customer</th>
-  											<th class="cell">Date</th>
+  											<th class="cell">Address</th>
+  											<th class="cell">Order Date</th>
   											<th class="cell">Status</th>
   											<th class="cell">Total</th>
   											<th class="cell"></th>
   										</tr>
   									</thead>
   									<tbody>
-  										<tr>
-  											<td class="cell">#15346</td>
-  											<td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget volutpat erat</span></td>
-  											<td class="cell">John Sanders</td>
-  											<td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span></td>
-  											<td class="cell"><span class="badge bg-success">Paid</span></td>
-  											<td class="cell">$259.35</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
+  										<?php
+											$id = 1;
+											foreach ($array['infor'] as $order) {
+												if ($order['order_status'] == '1') {
+											?>
+  												<tr>
+  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
+  													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
+  													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
+  													<td class="cell">
+  														<?php
+															if ($order['order_status'] == '0') {
+															?>
+  															<span class="badge bg-warning">
+  																Pending
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '1') {
+															?>
+  															<span class="badge bg-success">
+  																Paid
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '2') {
+															?>
+  															<span class="badge bg-danger">
+  																Cancelled
+  															</span>
+  														<?php
+															}
+															?>
 
-  										<tr>
-  											<td class="cell">#15344</td>
-  											<td class="cell"><span class="truncate">Pellentesque diam imperdiet</span></td>
-  											<td class="cell">Teresa Holland</td>
-  											<td class="cell"><span class="cell-data">16 Oct</span><span class="note">01:16 AM</span></td>
-  											<td class="cell"><span class="badge bg-success">Paid</span></td>
-  											<td class="cell">$123.00</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
-
-  										<tr>
-  											<td class="cell">#15343</td>
-  											<td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed mollis ipsum</span></td>
-  											<td class="cell">Jayden Massey</td>
-  											<td class="cell"><span class="cell-data">15 Oct</span><span class="note">8:07 PM</span></td>
-  											<td class="cell"><span class="badge bg-success">Paid</span></td>
-  											<td class="cell">$199.00</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
-
-
-  										<tr>
-  											<td class="cell">#15341</td>
-  											<td class="cell"><span class="truncate">Morbi vulputate lacinia neque et sollicitudin</span></td>
-  											<td class="cell">Raymond Atkins</td>
-  											<td class="cell"><span class="cell-data">11 Oct</span><span class="note">11:18 AM</span></td>
-  											<td class="cell"><span class="badge bg-success">Paid</span></td>
-  											<td class="cell">$678.26</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
+  													</td>
+  													<td class="cell"><?php echo $order['order_total']; ?> đ</td>
+  													<td class="cell text-center">
+  														<a href="index.php?controller=order&action=edit_order&order_id=<?= $order['order_id'] ?>" class="btn-sm app-btn-secondary" href="#">View</a>
+  														<a class="btn-sm app-btn-secondary" onclick="return confirm('Bạn có muốn xóa đơn *<?= $order['order_recipient_name'] ?>* không?')" href="index.php?controller=order&action=delete_order&order_id=<?= $order['order_id'] ?>">
+  															Delete
+  														</a>
+  													</td>
+  												</tr>
+  										<?php
+												}
+											}
+											?>
 
   									</tbody>
   								</table>
   							</div><!--//table-responsive-->
   						</div><!--//app-card-body-->
   					</div><!--//app-card-->
+  					<nav class="app-pagination d-flex justify-content-center">
+  						<?php
+							for ($i = 1; $i <= $array['page']; $i++) {
+							?>
+  							<form method="post" action="index.php?controller=order&page=<?= $i ?>">
+
+  								<ul class="pagination justify-content-center">
+
+  									<li class="page-item"><input type="hidden" name="search" value="<?= $array['search'] ?>"></li>
+  									<li class="page-item"> <input type="hidden" name="page" value="<?= $i ?>"></li>
+  									<li class="page-item"><button class="page-link"><?= $i ?></button></li>
+  									</li>
+  								</ul>
+  							</form>
+  						<?php
+							}
+							?>
+
+  					</nav>
   				</div><!--//tab-pane-->
   				<div class="tab-pane fade" id="orders-pending" role="tabpanel" aria-labelledby="orders-pending-tab">
   					<div class="app-card app-card-orders-table mb-5">
   						<div class="app-card-body">
   							<div class="table-responsive">
-  								<table class="table mb-0 text-left">
+  								<table class="table app-table-hover mb-0 text-left">
   									<thead>
   										<tr>
   											<th class="cell">Order</th>
-  											<th class="cell">Product</th>
   											<th class="cell">Customer</th>
-  											<th class="cell">Date</th>
+  											<th class="cell">Address</th>
+  											<th class="cell">Order Date</th>
   											<th class="cell">Status</th>
   											<th class="cell">Total</th>
   											<th class="cell"></th>
   										</tr>
   									</thead>
   									<tbody>
-  										<tr>
-  											<td class="cell">#15345</td>
-  											<td class="cell"><span class="truncate">Consectetur adipiscing elit</span></td>
-  											<td class="cell">Dylan Ambrose</td>
-  											<td class="cell"><span class="cell-data">16 Oct</span><span class="note">03:16 AM</span></td>
-  											<td class="cell"><span class="badge bg-warning">Pending</span></td>
-  											<td class="cell">$96.20</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
+  										<?php
+											$id = 1;
+											foreach ($array['infor'] as $order) {
+												if ($order['order_status'] == '0') { ?>
+  												<tr>
+  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
+  													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
+  													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
+  													<td class="cell">
+  														<?php
+															if ($order['order_status'] == '0') {
+															?>
+  															<span class="badge bg-warning">
+  																Pending
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '1') {
+															?>
+  															<span class="badge bg-success">
+  																Paid
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '2') {
+															?>
+  															<span class="badge bg-danger">
+  																Cancelled
+  															</span>
+  														<?php
+															}
+															?>
+
+  													</td>
+  													<td class="cell"><?php echo $order['order_total']; ?> đ</td>
+  													<td class="cell text-center">
+  														<a href="index.php?controller=order&action=edit_order&order_id=<?= $order['order_id'] ?>" class="btn-sm app-btn-secondary" href="#">View</a>
+  														<a class="btn-sm app-btn-secondary" onclick="return confirm('Bạn có muốn xóa đơn *<?= $order['order_recipient_name'] ?>* không?')" href="index.php?controller=order&action=delete_order&order_id=<?= $order['order_id'] ?>">
+  															Delete
+  														</a>
+  													</td>
+  												</tr>
+  										<?php
+												}
+											}
+											?>
+
   									</tbody>
   								</table>
   							</div><!--//table-responsive-->
   						</div><!--//app-card-body-->
   					</div><!--//app-card-->
+  					<nav class="app-pagination d-flex justify-content-center">
+  						<?php
+							for ($i = 1; $i <= $array['page']; $i++) {
+							?>
+  							<form method="post" action="index.php?controller=order&page=<?= $i ?>">
+
+  								<ul class="pagination justify-content-center">
+
+  									<li class="page-item"><input type="hidden" name="search" value="<?= $array['search'] ?>"></li>
+  									<li class="page-item"> <input type="hidden" name="page" value="<?= $i ?>"></li>
+  									<li class="page-item"><button class="page-link"><?= $i ?></button></li>
+  									</li>
+  								</ul>
+  							</form>
+  						<?php
+							}
+							?>
+
+  					</nav>
   				</div><!--//tab-pane-->
   				<div class="tab-pane fade" id="orders-cancelled" role="tabpanel" aria-labelledby="orders-cancelled-tab">
   					<div class="app-card app-card-orders-table mb-5">
   						<div class="app-card-body">
   							<div class="table-responsive">
-  								<table class="table mb-0 text-left">
+  								<table class="table app-table-hover mb-0 text-left">
   									<thead>
   										<tr>
   											<th class="cell">Order</th>
-  											<th class="cell">Product</th>
   											<th class="cell">Customer</th>
-  											<th class="cell">Date</th>
+  											<th class="cell">Address</th>
+  											<th class="cell">Order Date</th>
   											<th class="cell">Status</th>
   											<th class="cell">Total</th>
   											<th class="cell"></th>
   										</tr>
   									</thead>
   									<tbody>
+  										<?php
+											$id = 1;
+											foreach ($array['infor'] as $order) {
+												if ($order['order_status'] == '2') { ?>
+  												<tr>
+  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
+  													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
+  													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
+  													<td class="cell">
+  														<?php
+															if ($order['order_status'] == '0') {
+															?>
+  															<span class="badge bg-warning">
+  																Pending
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '1') {
+															?>
+  															<span class="badge bg-success">
+  																Paid
+  															</span>
+  														<?php
+															} elseif ($order['order_status'] == '2') {
+															?>
+  															<span class="badge bg-danger">
+  																Cancelled
+  															</span>
+  														<?php
+															}
+															?>
 
-  										<tr>
-  											<td class="cell">#15342</td>
-  											<td class="cell"><span class="truncate">Justo feugiat neque</span></td>
-  											<td class="cell">Reina Brooks</td>
-  											<td class="cell"><span class="cell-data">12 Oct</span><span class="note">04:23 PM</span></td>
-  											<td class="cell"><span class="badge bg-danger">Cancelled</span></td>
-  											<td class="cell">$59.00</td>
-  											<td class="cell"><a class="btn-sm app-btn-secondary" href="#">View</a></td>
-  										</tr>
+  													</td>
+  													<td class="cell"><?php echo $order['order_total']; ?> đ</td>
+  													<td class="cell text-center">
+  														<a href="index.php?controller=order&action=edit_order&order_id=<?= $order['order_id'] ?>" class="btn-sm app-btn-secondary" href="#">View</a>
+  														<a class="btn-sm app-btn-secondary" onclick="return confirm('Bạn có muốn xóa đơn *<?= $order['order_recipient_name'] ?>* không?')" href="index.php?controller=order&action=delete_order&order_id=<?= $order['order_id'] ?>">
+  															Delete
+  														</a>
+  													</td>
+  												</tr>
+  										<?php
+												}
+											}
+											?>
 
   									</tbody>
   								</table>
   							</div><!--//table-responsive-->
   						</div><!--//app-card-body-->
   					</div><!--//app-card-->
-  				</div><!--//tab-pane-->
+  					<nav class="app-pagination d-flex justify-content-center">
+  						<?php
+							for ($i = 1; $i <= $array['page']; $i++) {
+							?>
+  							<form method="post" action="index.php?controller=order&page=<?= $i ?>">
+
+  								<ul class="pagination justify-content-center">
+
+  									<li class="page-item"><input type="hidden" name="search" value="<?= $array['search'] ?>"></li>
+  									<li class="page-item"> <input type="hidden" name="page" value="<?= $i ?>"></li>
+  									<li class="page-item"><button class="page-link"><?= $i ?></button></li>
+  									</li>
+  								</ul>
+  							</form>
+  						<?php
+							}
+							?>
+
+  					</nav>
+  				</div>
   			</div><!--//tab-content-->
 
 

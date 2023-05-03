@@ -5,7 +5,7 @@
                 <div class="card border-0 shadow rounded-3 my-5">
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5">Đăng Nhập</h5>
-                        <form method="post" action="index.php?controller=login&action=loginAcccess">
+                        <form method="post" action="index.php?controller=login&action=loginAccess">
                             <div class="form-floating mb-3">
                                 <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Địa Chỉ Email</label>

@@ -46,7 +46,7 @@
                 <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                     <i class="fa fa-fw fa-search text-dark mr-2"></i>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="index.php?controller=cart">
+                <a class="nav-icon position-relative text-decoration-none" href="index.php?controller=cart&action=view_cart">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <!-- <span
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
@@ -54,31 +54,40 @@
 
                     <!-- Thêm đăng nhập đăng kí -->
                 </a>
-                <!-- <div class=""><a class="nav-icon position-relative text-decoration-none" href="./shop-cart.html"></a>
-                    <a href="index.php?controller=login" class="btn btn-outline-success border border-success me-2">Đăng Nhập</a>
-                    <a href="index.php?controller=register" class="btn btn-success text-white">Đăng Kí</a>
-                </div> -->
+                <?php
+                if (isset($_SESSION['email'])) {
+                    // Biến SESSION tồn tại
+                    // Hiển thị nội dung cần thiết ở đây
+                    echo "<div class='app-utility-item app-user-dropdown dropdown d-flex align-items-end'>
+                    <a href='index.php?controller=account' class='pe-2 text-capitalize'>Tài khoản</a>
+                    <a class='dropdown-toggle' id='user-dropdown-toggle' data-bs-toggle='dropdown' href='index.php?controller=account' role='button' aria-expanded='false'>
+                        <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-person-fill' viewBox='0 0 16 16'>
+                            <path d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z' />
+                        </svg></a>
+                    <ul class='dropdown-menu' aria-labelledby='user-dropdown-toggle'>
+                        <li><a class='dropdown-item' href='index.php?controller=account'>Thông tin cá nhân</a></li>
+                        <li><a class='dropdown-item' href='index.php?controller=cart&action=view_cart'>Rỏ hàng</a></li>
+                        <li><a class='dropdown-item' href='index.php?controller=account&action=order_management'>Quản lý đơn hàng</a></li>
+                        <li><a class='dropdown-item' href='index.php?controller=account&action=purchase_history'>Lịch sử mua hàng</a></li>
+                        <li>
+                            <hr class='dropdown-divider'>
+                        </li>
+                        <li><a class='dropdown-item' href='index.php?controller=login&action=logout'>Đăng xuất</a></li>
+                    </ul>
+                </div>'";
+                } else {
+                    echo "<div>
+                    <a href='index.php?controller=login' class='btn btn-outline-success border border-success me-2'>Đăng Nhập</a>
+                    <a href='index.php?controller=register' class='btn btn-success text-white'>Đăng Kí</a>
+                </div>";
+                }
+
+                ?>
+
                 <!-- Kết thúc đăng nhập đăng kí -->
                 <!-- Người dùng  -->
-                <div class="app-utility-item app-user-dropdown dropdown d-flex align-items-end">
-                    <?php
-                    $email = $_SESSION['email'];
-                    ?>
-                    <a href="index.php?controller=profile" class="pe-2 text-capitalize"><?php
-                                                                                        echo $email
-                                                                                        ?></a>
-                    <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                        </svg></a>
-                    <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                        <li><a class="dropdown-item" href="index.php?controller=profile">Account</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="index.php?controller=login&action=logout">Log Out</a></li>
-                    </ul>
-                </div>
+
+
                 <!-- Kết thúc người dùng -->
             </div>
         </div>

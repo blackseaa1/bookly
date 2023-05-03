@@ -14,16 +14,7 @@ switch ($action) {
         include_once 'models/shopModel.php';
         include_once 'views/shop/product_detail.php';
         break;
-    case 'add_cart':
-        include_once 'models/shopModel.php';
-        echo '<script>
-                        window.history.back();
-                    </script>';
-        break;
-    case 'view_cart':
-        include_once 'models/shopModel.php';
-        include_once 'views/cart/index.php';
-        break;
+
         // case 'edit_category':
         //     include_once 'models/brandModel.php';
         //     include_once 'views/brands/edit.php';

@@ -13311,7 +13311,8 @@ button.close:focus {
     min-height: 100vh;
     height: 100%;
     width: 100%;
-    background: #d3d3d3;;
+    background: #d3d3d3;
+    ;
     padding-top: 56px;
     overflow-x: hidden
 }
@@ -14017,3 +14018,4 @@ button.close:focus {
     font-size: 22px;
     margin-right: 6px;
 }
+

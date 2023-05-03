@@ -12,7 +12,7 @@ switch ($action) {
         include_once 'views/login/login.php';
         break;
     case 'login':
-        if (isset($_SESSION['username'])) {
+        if (isset($_SESSION['email'])) {
             header('Location:index.php');
         } else {
             //            Hiển thị form đăng nhập
@@ -36,7 +36,7 @@ switch ($action) {
         include_once 'models/loginModel.php';
         //            quay về form đăng nhập
         echo '<script>
-                    location.href = "index.php?controller=login&action=login";
+                    location.href = "index.php?";
                 </script>';
         break;
 }

@@ -1,6 +1,6 @@
 <?php
 //function để lấy dữ liệu từ DB về
-function loginAccess() {
+function loginCustomer() {
     $email = $_POST['email'];
     $password = $_POST['password'];
     // Kiểm tra nếu người dùng không nhập đầy đủ thông tin đăng nhập
@@ -25,6 +25,7 @@ function loginAccess() {
         } elseif ($user['count_user'] == 1) {
             if ($user['role_id'] == '2') {
                 $_SESSION['email'] = $email;
+                $_SESSION['account_id'] = $user['account_id'];
                 $_SESSION['fullname'] = $user['fullname'];
                 $msg = "Đăng nhập thành công";
                 echo "<script>alert('$msg');</script>";
@@ -42,7 +43,7 @@ function loginAccess() {
 
 switch ($action) {
     case 'loginAccess':
-        $test = loginAccess();
+        $test = loginCustomer();
         break;
     case 'logout':
         session_destroy();
