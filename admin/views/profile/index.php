@@ -48,7 +48,11 @@
                             <form method="post" action="index.php?controller=profile&action=update_password">
                                 <input type="hidden" name="account_id" value="<?= $profile['account_id'] ?>">
                                 <div class="mb-3">
-                                    <label class="form-label  text-black" for="password">Mật Khẩu</label>
+                                    <label class="form-label  text-black" for="orpassword">Mật Khẩu Cũ</label>
+                                    <input class="form-control" id="orpassword" name="orpassword" type="password" placeholder="Password">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label  text-black" for="password">Mật Khẩu Mới</label>
                                     <input class="form-control" id="password" name="password" type="password" placeholder="Password">
 
                                 </div>
@@ -59,9 +63,9 @@
                                 <button class="btn btn-success text-white fs-5" name="sbmpassword" type="submit">Cập Nhật</button>
 
                             </form>
-                            <?php
-                        }
-                            ?>
+                        <?php
+                    }
+                        ?>
                         </div>
                     </div>
                 </div>

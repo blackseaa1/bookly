@@ -13,7 +13,7 @@ function index_orders()
     include_once 'connect/openConnect.php';
 
     // Tính toán số bản ghi và số trang
-    $sqlCount = "SELECT COUNT(*) AS count_record FROM tbl_order WHERE order_id LIKE '%$search%'";
+    $sqlCount = "SELECT COUNT(*) AS count_record FROM tbl_order WHERE order_id  LIKE '%$search%' ";
     $counts = mysqli_query($connect, $sqlCount);
     foreach ($counts as $each) {
         $countRecord = $each['count_record'];
@@ -31,8 +31,9 @@ function index_orders()
     $start = ($page - 1) * $recordOnePage;
     $end = 15;
     $sql = "SELECT * FROM tbl_order
-    WHERE order_recipient_name LIKE '%$search%' OR order_recipient_phone LIKE '%$search%' OR order_recipient_address LIKE '%$search%'
-    LIMIT $start, $end";
+WHERE order_recipient_name LIKE '%$search%' OR order_recipient_phone LIKE '%$search%' OR order_recipient_address LIKE '%$search%' OR order_id LIKE '%$search%'
+ORDER BY order_id DESC
+LIMIT $start, $end";
 
     $orders = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';
@@ -172,20 +173,44 @@ function edit_order()
 
 function updated_status()
 {
-
     $order_id = $_POST['order_id'];
     $order_status = $_POST['order_status'];
 
     include_once './connect/openConnect.php';
-    $sql = "UPDATE tbl_order SET
-                            order_status = '$order_status',
-                            updated_date = now()
-                            WHERE order_id = $order_id";
-    mysqli_query($connect, $sql);
-    include_once './connect/closeConnect.php';
-    $msg = "Cập nhật đơn hàng thành công";
-    echo "<script>alert('$msg');window.history.back();</script>";
+    // Thực hiện truy vấn kiểm tra trạng thái đơn hàng
+    $sql = "SELECT * FROM tbl_order WHERE order_id='$order_id' AND order_status = 2";
+    $result = mysqli_query($connect, $sql);
+
+    // Kiểm tra số lượng kết quả trả về từ truy vấn
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('Đơn hàng đã được hủy');window.history.back();</script>";
+        return;
+        // exit();
+    } else {
+        $sql = "SELECT * FROM tbl_order WHERE order_id='$order_id' AND order_status = 1";
+        $result = mysqli_query($connect, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Đơn hàng đã được duyệt');window.history.back();</script>";
+            return;
+        } else {
+            // Nếu không có kết quả trả về thì tiếp tục thực hiện các công việc khác
+            // ... 
+            // Update the order record
+            $sqlUpdate = "UPDATE tbl_order SET
+                        order_status = '$order_status',
+                        updated_date = now()
+                        WHERE order_id = $order_id";
+            mysqli_query($connect, $sqlUpdate);
+
+            include_once './connect/closeConnect.php';
+
+            $msg = "Cập nhật đơn hàng thành công";
+            echo "<script>alert('$msg');window.history.back();</script>";
+        }
+    }
 }
+
+
 
 function delete_order()
 {

@@ -21,11 +21,9 @@
         <div class="container">
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
-                    <h1>About Us</h1>
+                    <h1>Về chúng tôi</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Bookly End of Alley là hiệu sách lý tưởng cho những người yêu sách với nhiều lựa chọn đầu sách và thể loại. Chúng tôi có nhân viên am hiểu và tự hào tuyển chọn bộ sưu tập đáp ứng mọi sở thích. Ngoài ra, chúng tôi còn tổ chức các sự kiện văn học và có góc đọc sách ấm cúng với Wi-Fi miễn phí. Hãy đến thăm chúng tôi để bắt đầu hành trình đọc sách của bạn.
                     </p>
                 </div>
                 <div class="col-md-4">
@@ -40,10 +38,11 @@
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Our Services</h1>
+                <h1 class="h1">Dịch Vụ</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
+                    Quan trọng là có khách hàng tốt thì mới thành công, nhưng quan trọng thế nào mới có khách hàng tốt.
+
+
                 </p>
             </div>
         </div>
@@ -93,26 +92,26 @@
                 </div>
                 <div class="col-lg-9 m-auto tempaltemo-carousel">
                     <div class="row d-flex flex-row"> -->
-                        <!--Controls-->
-                        <!-- <div class="col-1 align-self-center">
+    <!--Controls-->
+    <!-- <div class="col-1 align-self-center">
                             <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="prev">
                                 <i class="text-light fas fa-chevron-left"></i>
                             </a>
                         </div> -->
-                        <!--End Controls-->
+    <!--End Controls-->
 
-                        <!--Carousel Wrapper-->
-                        <!-- <div class="col"> -->
-                            <!-- <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="templatemo-slide-brand" data-bs-ride="carousel"> -->
-                                <!-- Slides -->
-                                <!-- <div class="carousel-inner product-links-wap" role="listbox"> -->
+    <!--Carousel Wrapper-->
+    <!-- <div class="col"> -->
+    <!-- <div class="carousel slide carousel-multi-item pt-2 pt-md-0" id="templatemo-slide-brand" data-bs-ride="carousel"> -->
+    <!-- Slides -->
+    <!-- <div class="carousel-inner product-links-wap" role="listbox"> -->
 
-                                    <!--First slide-->
-                                    <!-- <div class="carousel-item active">
+    <!--First slide-->
+    <!-- <div class="carousel-item active">
                                         <div class="row"> -->
-                                            <!-- <div class="col-3 p-md-5"> -->
-                                                <!-- <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a> -->
-                                            <!-- </div>
+    <!-- <div class="col-3 p-md-5"> -->
+    <!-- <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a> -->
+    <!-- </div>
                                             <div class="col-3 p-md-5">
                                                 <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_02.png" alt="Brand Logo"></a>
                                             </div>
@@ -124,10 +123,10 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <!--End First slide-->
+    <!--End First slide-->
 
-                                    <!--Second slide-->
-                                    <!-- <div class="carousel-item">
+    <!--Second slide-->
+    <!-- <div class="carousel-item">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
                                                 <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
@@ -143,10 +142,10 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <!--End Second slide-->
+    <!--End Second slide-->
 
-                                    <!--Third slide-->
-                                    <!-- <div class="carousel-item">
+    <!--Third slide-->
+    <!-- <div class="carousel-item">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
                                                 <a href="#"><img class="img-fluid brand-img" src="assets/img/brand_01.png" alt="Brand Logo"></a>
@@ -162,22 +161,22 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <!--End Third slide-->
+    <!--End Third slide-->
 
-                                <!-- </div> -->
-                                <!--End Slides-->
-                            <!-- </div> -->
-                        <!-- </div> -->
-                        <!--End Carousel Wrapper-->
+    <!-- </div> -->
+    <!--End Slides-->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!--End Carousel Wrapper-->
 
-                        <!--Controls-->
-                        <!-- <div class="col-1 align-self-center">
+    <!--Controls-->
+    <!-- <div class="col-1 align-self-center">
                             <a class="h1" href="#templatemo-slide-brand" role="button" data-bs-slide="next">
                                 <i class="text-light fas fa-chevron-right"></i>
                             </a>
                         </div> -->
-                        <!-- End Controls -->
-                    <!-- </div>
+    <!-- End Controls -->
+    <!-- </div>
                 </div>
             </div>
         </div>

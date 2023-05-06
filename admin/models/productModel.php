@@ -25,7 +25,7 @@ function index_product()
     INNER JOIN tbl_category ON tbl_product.category_id = tbl_category.category_id
     INNER JOIN tbl_author ON tbl_product.author_id = tbl_author.author_id
     INNER JOIN tbl_publishing_company ON tbl_product.publishing_company_id = tbl_publishing_company.publishing_company_id
-    WHERE tbl_product.product_name LIKE '%$search%' OR tbl_category.category_name LIKE '%$search%' OR tbl_author.author_name LIKE '%$search%' OR tbl_publishing_company.publishing_company_name LIKE '%$search%' OR tbl_product.price LIKE '%$search%'
+    WHERE tbl_product.product_name LIKE '%$search%' OR tbl_category.category_name LIKE '%$search%' OR tbl_author.author_name LIKE '%$search%' OR tbl_product.quantity LIKE '%$search%' OR tbl_publishing_company.publishing_company_name LIKE '%$search%' OR tbl_product.price LIKE '%$search%'
     LIMIT $start, $end";
     $products = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';

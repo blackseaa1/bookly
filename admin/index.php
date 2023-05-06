@@ -1,6 +1,8 @@
 <?php
 session_name('admin_session');
 session_start();
+// print_r($_SESSION);
+
 
 
 ?>

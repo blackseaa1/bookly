@@ -78,7 +78,9 @@ function index_shop()
 }
 function product_detail()
 {
+
     $product_id = $_GET['product_id'];
+    $amount = 1;
     include_once './connect/openConnect.php';
     $sqlCategory = "SELECT * FROM tbl_category";
     $categorys = mysqli_query($connect, $sqlCategory);
@@ -90,12 +92,12 @@ function product_detail()
     $products = mysqli_query($connect, $sql);
     include_once './connect/closeConnect.php';
     $array = array();
+    $array['amount'] = $amount;
     $array['categorys'] = $categorys;
     $array['products'] = $products;
     $array['publishing_companys'] = $publishing_companys;
     $array['authors'] = $authors;
     return $array;
-    
 }
 //    function thêm sản phẩm lên giỏ hàng
 
@@ -112,5 +114,4 @@ switch ($action) {
     case 'product_detail':
         $array = product_detail();
         break;
-
 }

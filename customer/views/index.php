@@ -26,60 +26,25 @@
 			<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
 		</div>
 		<div class="carousel-inner">
-			<div class="carousel-item">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-md-7 pt-5 mb-5 align-self-center">
-							<div class="promo pe-md-3 pe-lg-5">
-								<h1 class="headline mb-3">
-									DEVBOOK LANDING <br>SELF-PUBLISHING YOUR BOOK
-								</h1><!--//headline-->
-								<div class="subheadline mb-4">
-									Mẫu sách miễn phí dành cho nhà phát triển và lập trình viên muốn tự xuất bản sách. Tải xuống ngay bây giờ và bắt đầu bán sách của bạn ngay lập tức!
-
-								</div><!--//subheading-->
-
-								<div class="cta-holder row gx-md-3 gy-3 gy-md-0">
-									<div class="col-12 col-md-auto">
-										<a class="btn btn-success w-100" href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/">Mua Ngay $29</a>
-									</div>
-									<div class="col-12 col-md-auto">
-										<a class="btn btn-outline-success border border-success scrollto w-100" href="#benefits-section">Tìm Hiểu Thếm</a>
-									</div>
-								</div><!--//cta-holder-->
-							</div><!--//promo-->
-						</div><!--col-->
-						<div class="col-12 col-md-5 mb-5 align-self-center">
-							<div class="book-cover-holder">
-								<img class="img-fluid book-cover" src="assets/img/devbook-cover.png" alt="book cover">
-								<div class="book-badge d-inline-block shadow ">
-									New<br>Release
-								</div>
-							</div><!--//book-cover-holder-->
-							<div class="text-center"><a class="theme-link scrollto" href="#reviews-section">Xem tất cả các đánh giá sách</a></div>
-						</div><!--col-->
-					</div><!--//row-->
-				</div><!--//container-->
-			</div>
 			<div class="carousel-item active">
 				<div class="container">
 					<div class="row">
 						<div class="col-12 col-md-7 pt-5 mb-5 align-self-center">
 							<div class="promo pe-md-3 pe-lg-5">
 								<h1 class="headline mb-3">
-									DEVBOOK LANDING <br>SELF-PUBLISHING YOUR BOOK
+									<span class="fw-bold fs-1">Bookly</span> <br> <span class="text-success">End Of Alley</span>
 								</h1><!--//headline-->
 								<div class="subheadline mb-4">
-									Mẫu sách miễn phí dành cho nhà phát triển và lập trình viên muốn tự xuất bản sách. Tải xuống ngay bây giờ và bắt đầu bán sách của bạn ngay lập tức!
+									Nơi thỏa mãn đam mê sách của bạn với hàng ngàn tác phẩm đa dạng từ các tác giả nổi tiếng trên thế giới, đến với chúng tôi bạn sẽ được khám phá những kiến thức bổ ích và tinh hoa tri thức đầy sức sống.
 
 								</div><!--//subheading-->
 
 								<div class="cta-holder row gx-md-3 gy-3 gy-md-0">
 									<div class="col-12 col-md-auto">
-										<a class="btn btn-success w-100" href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/">Mua Ngay $29</a>
+										<a class="btn btn-success w-100" href="index.php?controller=shop">Mua Ngay</a>
 									</div>
 									<div class="col-12 col-md-auto">
-										<a class="btn btn-outline-success border border-success scrollto w-100" href="#benefits-section">Tìm Hiểu Thếm</a>
+										<a class="btn btn-outline-success border border-success scrollto w-100" href="index.php?controller=about">Tìm Hiểu Thếm</a>
 									</div>
 								</div><!--//cta-holder-->
 							</div><!--//promo-->
@@ -87,59 +52,14 @@
 						<div class="col-12 col-md-5 mb-5 align-self-center">
 							<div class="book-cover-holder">
 								<img class="img-fluid book-cover" src="assets/img/devbook-cover.png" alt="book cover">
-								<div class="book-badge d-inline-block shadow ">
-									New<br>Release
-								</div>
-							</div><!--//book-cover-holder-->
-							<div class="text-center"><a class="theme-link scrollto" href="#reviews-section">Xem tất cả các đánh giá sách</a></div>
-						</div><!--col-->
-					</div><!--//row-->
-				</div><!--//container-->
-			</div>
-			<div class="carousel-item">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-md-7 pt-5 mb-5 align-self-center">
-							<div class="promo pe-md-3 pe-lg-5">
-								<h1 class="headline mb-3">
-									DEVBOOK LANDING <br>SELF-PUBLISHING YOUR BOOK
-								</h1><!--//headline-->
-								<div class="subheadline mb-4">
-									Mẫu sách miễn phí dành cho nhà phát triển và lập trình viên muốn tự xuất bản sách. Tải xuống ngay bây giờ và bắt đầu bán sách của bạn ngay lập tức!
 
-								</div><!--//subheading-->
-
-								<div class="cta-holder row gx-md-3 gy-3 gy-md-0">
-									<div class="col-12 col-md-auto">
-										<a class="btn btn-success w-100" href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/devbook-free-bootstrap-5-book-ebook-landing-page-template-for-developers/">Mua Ngay $29</a>
-									</div>
-									<div class="col-12 col-md-auto">
-										<a class="btn btn-outline-success border border-success scrollto w-100" href="#benefits-section">Tìm Hiểu Thếm</a>
-									</div>
-								</div><!--//cta-holder-->
-							</div><!--//promo-->
-						</div><!--col-->
-						<div class="col-12 col-md-5 mb-5 align-self-center">
-							<div class="book-cover-holder">
-								<img class="img-fluid book-cover" src="assets/img/devbook-cover.png" alt="book cover">
-								<div class="book-badge d-inline-block shadow ">
-									New<br>Release
-								</div>
 							</div><!--//book-cover-holder-->
-							<div class="text-center"><a class="theme-link scrollto" href="#reviews-section">Xem tất cả các đánh giá sách</a></div>
+							<div class="text-center"><a class="theme-link scrollto" href="index.php?controller=shop">Xem tất cả các sản phẩm</a></div>
 						</div><!--col-->
 					</div><!--//row-->
 				</div><!--//container-->
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon text-bg-success rounded-circle" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-			<span class="carousel-control-next-icon text-bg-success rounded-circle" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 	</div>
 </section>
 <!-- End Banner Hero -->
@@ -150,28 +70,27 @@
 	<div class="container py-5">
 		<div class="row text-center pt-3">
 			<div class="col-lg-6 m-auto">
-				<h1 class="h1">Danh Mục Của Tháng</h1>
+				<h1 class="h1">Các danh mục</h1>
 				<p>
 					Nếu không bị dục vọng làm cho mờ mắt, thì không ra, có lỗi là bỏ bổn phận, mềm lòng, đó là cực nhọc.
 				</p>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-4 p-5 mt-3" style="text-align:center;">
-				<a href="#"><img src="./assets/img/book1.jpg" class="img-fluid border"></a>
-				<h5 class="text-center mt-3 mb-3">Tâm Lý Học</h5>
-				<p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-			</div>
-			<div class="col-12 col-md-4 p-5 mt-3" style="text-align:center;">
-				<a href="#"><img src="./assets/img/book1.jpg" class="img-fluid border"></a>
-				<h2 class="h5 text-center mt-3 mb-3">Tội Phạm</h2>
-				<p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-			</div>
-			<div class="col-12 col-md-4 p-5 mt-3" style="text-align:center;">
-				<a href="#"><img src="./assets/img/book1.jpg" class="img-fluid border"></a>
-				<h2 class="h5 text-center mt-3 mb-3">Làm Giàu</h2>
-				<p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-			</div>
+			<?php
+
+			foreach ($array['products'] as $product) { ?>
+				<div class="col-11 col-md-3 p-5 mt-3" style="text-align:center;">
+					<a href="#"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="img-fluid border" style="width: 300px !important; height:300px"></a>
+					<h5 class="text-center mt-3 mb-3"><?php echo $product['category_name']; ?></h5>
+					<p class="text-center"><a class="btn btn-success" href="index.php?controller=shop">Go Shop</a></p>
+				</div>
+
+
+
+			<?php
+			} ?>
+
 		</div>
 	</div>
 </section>
@@ -190,82 +109,33 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-4 mb-4">
-				<div class="card h-100">
-					<a href="shop-single.html">
-						<img src="./assets/img/bookupdate/book-1.png" style="width: 414px; height: 530px;" class="card-img-top" alt="...">
-					</a>
-					<div class="card-body">
-						<ul class="list-unstyled d-flex justify-content-between">
-							<li>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-muted fa fa-star"></i>
-								<i class="text-muted fa fa-star"></i>
-							</li>
-							<li class="text-muted text-right">$240.00</li>
-						</ul>
-						<a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
-						<p class="card-text">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
-							deserunt.
-						</p>
-						<p class="text-muted">Reviews (24)</p>
+			<?php
+
+			foreach ($array['productss'] as $products) { ?>
+				<div class="col-11 col-md-3 mb-4">
+					<div class="card h-100">
+						<a href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$products[product_id]" ?>">
+							<img src="../admin/assets/img/uploads/<?php echo $products['img']; ?>" style="width: 300px !important; height:300px" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<ul class="list-unstyled d-flex justify-content-between">
+								<li>
+									<i class="text-warning fa fa-star"></i>
+									<i class="text-warning fa fa-star"></i>
+									<i class="text-warning fa fa-star"></i>
+									<i class="text-muted fa fa-star"></i>
+									<i class="text-muted fa fa-star"></i>
+								</li>
+								<li class="text-muted text-right text-success"><?php echo $products['price']; ?> đ</li>
+							</ul>
+							<a href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$products[product_id]" ?>" class="h5 text-decoration-none text-dark"><?php echo $products['product_name']; ?></a>
+
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-12 col-md-4 mb-4">
-				<div class="card h-100">
-					<a href="shop-single.html">
-						<img src="./assets/img/bookupdate/book-1.png" style="width: 414px; height: 530px;" class="card-img-top" alt="...">
-					</a>
-					<div class="card-body">
-						<ul class="list-unstyled d-flex justify-content-between">
-							<li>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-muted fa fa-star"></i>
-								<i class="text-muted fa fa-star"></i>
-							</li>
-							<li class="text-muted text-right">$480.00</li>
-						</ul>
-						<a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-						<p class="card-text">
-							Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo
-							ullamcorper.
-						</p>
-						<p class="text-muted">Reviews (48)</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-4 mb-4">
-				<div class="card h-100">
-					<a href="shop-single.html">
-						<img src="./assets/img/bookupdate/book-1.png" style="width: 414px; height: 530px;" class="card-img-top" alt="...">
-					</a>
-					<div class="card-body">
-						<ul class="list-unstyled d-flex justify-content-between">
-							<li>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-								<i class="text-warning fa fa-star"></i>
-							</li>
-							<li class="text-muted text-right">$360.00</li>
-						</ul>
-						<a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides
-							Shoes</a>
-						<p class="card-text">
-							Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et
-							scelerisque ipsum lobortis nec.
-						</p>
-						<p class="text-muted">Reviews (74)</p>
-					</div>
-				</div>
-			</div>
+			<?php
+			} ?>
+
 		</div>
 	</div>
 </section>

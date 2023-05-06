@@ -11,6 +11,10 @@ switch ($action) {
         include_once 'models/cartModel.php';
         include_once 'views/cart/index.php';
         break;
+    case 'shop_now':
+        include_once 'models/cartModel.php';
+        include_once 'views/cart/index.php';
+        break;
     case 'add_cart':
         include_once 'models/cartModel.php';
         echo '<script>location.href = "index.php?controller=shop";</script>';

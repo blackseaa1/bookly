@@ -11,7 +11,7 @@
                         <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4 border border-success text-white" role="tablist">
                             <a class=" text-success flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="true">Tất cả</a>
                             <a class=" text-success flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" data-bs-toggle="tab" href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Thành công</a>
-                            <a class=" text-success flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Chưa giải quyết</a>
+                            <a class=" text-success flex-sm-fill text-sm-center nav-link" id="orders-pending-tab" data-bs-toggle="tab" href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Đang xử lý</a>
                             <a class=" text-success flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab" data-bs-toggle="tab" href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Hủy </a>
                         </nav>
                         <div class="tab-content" id="orders-table-tab-content">
@@ -37,7 +37,7 @@
                                                                             <div class="col-md-2"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="media-object img-thumbnail" alt="Ảnh sản phẩm" /></div>
                                                                             <div class="col-md-8 d-flex justify-content-sm-between align-items-center">
                                                                                 <div>
-                                                                                    <span><strong>Tên sản phẩm: Hiểu Về Trái Tim (Tái Bản 2023)</strong></span><br />
+                                                                                    <span><strong><a class="text-black fw-bold" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a></strong></span><br />
                                                                                     <span class="label label-info">Danh mục: Văn Học</span><br />
                                                                                     <span class="label label-info">Số lượng: x<?php echo $orderOdetail['amount']; ?></span><br />
                                                                                 </div>
@@ -61,19 +61,19 @@
                                                                     <?php
                                                                     if ($order['order_status'] == '0') {
                                                                     ?> <span class="badge bg-warning">
-                                                                            Pending
+                                                                            Đang xử lý
                                                                         </span>
                                                                     <?php
                                                                     } elseif ($order['order_status'] == '1') {
                                                                     ?>
                                                                         <span class="badge bg-success">
-                                                                            Paid
+                                                                            Thành công
                                                                         </span>
                                                                     <?php
                                                                     } elseif ($order['order_status'] == '2') {
                                                                     ?>
                                                                         <span class="badge bg-danger">
-                                                                            Cancelled
+                                                                            Hủy
                                                                         </span>
                                                                     <?php
                                                                     }
@@ -118,7 +118,7 @@
                                                                                 <div class="col-md-2"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="media-object img-thumbnail" alt="Ảnh sản phẩm" /></div>
                                                                                 <div class="col-md-8 d-flex justify-content-sm-between align-items-center">
                                                                                     <div>
-                                                                                        <span><strong>Tên sản phẩm: Hiểu Về Trái Tim (Tái Bản 2023)</strong></span><br />
+                                                                                        <span><strong><a class="text-black fw-bold" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a></strong></span><br />
                                                                                         <span class="label label-info">Danh mục: Văn Học</span><br />
                                                                                         <span class="label label-info">Số lượng: x<?php echo $orderOdetail['amount']; ?></span><br />
                                                                                     </div>
@@ -197,7 +197,7 @@
                                                                                 <div class="col-md-2"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="media-object img-thumbnail" alt="Ảnh sản phẩm" /></div>
                                                                                 <div class="col-md-8 d-flex justify-content-sm-between align-items-center">
                                                                                     <div>
-                                                                                        <span><strong>Tên sản phẩm: Hiểu Về Trái Tim (Tái Bản 2023)</strong></span><br />
+                                                                                        <span><strong><a class="text-black fw-bold" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a></strong></span><br />
                                                                                         <span class="label label-info">Danh mục: Văn Học</span><br />
                                                                                         <span class="label label-info">Số lượng: x<?php echo $orderOdetail['amount']; ?></span><br />
                                                                                     </div>
@@ -276,7 +276,7 @@
                                                                                 <div class="col-md-2"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="media-object img-thumbnail" alt="Ảnh sản phẩm" /></div>
                                                                                 <div class="col-md-8 d-flex justify-content-sm-between align-items-center">
                                                                                     <div>
-                                                                                        <span><strong>Tên sản phẩm: Hiểu Về Trái Tim (Tái Bản 2023)</strong></span><br />
+                                                                                        <span><strong><a class="text-black fw-bold" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a></strong></span><br />
                                                                                         <span class="label label-info">Danh mục: Văn Học</span><br />
                                                                                         <span class="label label-info">Số lượng: x<?php echo $orderOdetail['amount']; ?></span><br />
                                                                                     </div>

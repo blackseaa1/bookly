@@ -1,7 +1,7 @@
 <?php
 session_name('user_session');
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 
 
 ?>
@@ -45,6 +45,7 @@ print_r($_SESSION);
     }
     switch ($controller) {
         case '':
+            include_once './controller/homePageController.php';
             include_once './views/index.php';
             break;
         case 'about':
@@ -66,7 +67,13 @@ print_r($_SESSION);
             }
             break;
         case 'account':
-            include_once './controller/accountController.php';
+            if (isset($_SESSION['account_id'])) {
+                include_once './controller/accountController.php';
+            } else {
+                $msg = "Vui lòng đăng nhập";
+                echo "<script>alert('$msg');</script>";
+                echo '<script>location.href = "index.php?controller=login&action=login";</script>';
+            }
             break;
         case 'login':
             include_once './controller/loginController.php';
@@ -78,7 +85,7 @@ print_r($_SESSION);
             include_once './controller/userController.php';
             break;
         default:
-            echo "Chua co controller nao";
+            include_once 'views/404/index.php';
             break;
     }
     ?>

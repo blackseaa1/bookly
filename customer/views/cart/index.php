@@ -50,7 +50,7 @@
                                             <div class='d-flex align-items-center'>
                                                 <img src='../admin/assets/img/uploads/<?= $value['img']; ?>' class='img-fluid rounded-3' style='width: 120px;' alt='Book'>
                                                 <div class='flex-column ms-4'>
-                                                    <p class='mb-2'><?= $value['product_name']; ?></p>
+                                                    <p class='mb-2'><a class="text-black" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$value[product_id]" ?>"><?= $value['product_name']; ?></a></p>
                                                     <p class='mb-0'><?= $value['author_name']; ?></p>
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@
                                         <hr class="my-4">
                                         <button class="btn btn-success btn-block btn-lg">
                                             <div class="d-flex justify-content-between">
-                                                <span>Thanh Toán</span>
+                                                <span>Đặt đơn</span>
                                             </div>
                                         </button>
                                     </form>

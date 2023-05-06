@@ -4,7 +4,7 @@
 
             <div class="row g-3 mb-4 align-items-center justify-content-between">
                 <div class="col-auto">
-                    <h1 class="app-page-title mb-0">Cập Nhật Hóa Đơn</h1>
+                    <h1 class="app-page-title mb-0">Chi Tiết Hóa Đơn</h1>
                 </div>
                 <div class="col-auto">
                     <div class="page-utilities">
@@ -113,7 +113,7 @@
                                                                             <div class='d-flex align-items-center'>
                                                                                 <img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                                                                                 <div class='flex-column ms-4' style="max-width: 70vh;">
-                                                                                    <p class='mb-2 truncate-author'><?php echo $product['product_name']; ?></p>
+                                                                                    <p class='mb-2 truncate-author'><a class="text-black" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a> </p>
                                                                                     <?php
                                                                                     foreach ($array['authors'] as $author) {
                                                                                         if ($author['author_id'] == $product['author_id']) {
@@ -148,21 +148,29 @@
                                                 <p class="text-black float-start"><span class="text-black me-3">Tổng Cộng :</span><span style="font-size: 25px;"><?php echo $order['order_total']; ?> đ</span></p>
                                             </div>
                                         </div>
-                                        <form class="tm-edit-product-form" action="index.php?controller=account&action=updated_status" method="post">
-                                            <input name="order_id" type="hidden" value="<?= $order['order_id'] ?>">
-                                            <hr>
-                                            <div class="row justify-content-between">
-                                                <div class="col-xl-2">
-                                                    <select class="form-select" name="order_status" aria-label="Default select example">
-                                                        <option value="0" <?php if ($order['order_status'] == 0) echo 'selected'; ?>>Đặt đơn</option>
-                                                        <option value="2" <?php if ($order['order_status'] == 2) echo 'selected'; ?>>Hủy</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-xl-2">
-                                                    <button class="btn btn-success text-capitalize text-white">Cập Nhật</button>
-                                                </div>
+                                        <hr>
+                                        <div class="row justify-content-between">
+                                            <div class="col-xl-2">
+
                                             </div>
-                                        </form>
+                                            <div class="col-xl-3">
+
+                                                <?php
+                                                if ($order['order_status'] == '2' || $order['order_status'] == '1' ) {
+
+                                                    
+                                                } else {
+                                                ?>
+                                                    <a class="btn btn-danger text-capitalize text-white" onclick="return confirm('Bạn có muốn hủy đơn hàng không?')" href="index.php?controller=account&action=updated_status&order_id=<?= $order['order_id'] ?>">
+                                                        Hủy Đơn Hàng
+                                                    </a>
+                                                <?php
+                                                }
+
+                                                ?>
+
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>

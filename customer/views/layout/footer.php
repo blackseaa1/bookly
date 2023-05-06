@@ -12,7 +12,8 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            P214, Tòa nhà A17 Bách Khoa, 17 Tạ Quang Bửu, Hai Bà Trưng, Hà Nội
+                            <a target="_blank" href="https://goo.gl/maps/tyPTkssmuBicPwy77?coh=178572&entry=tt">P214, Tòa nhà A17 Bách Khoa, 17 Tạ Quang Bửu, Hai Bà Trưng, Hà Nội</a>
+
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
@@ -30,21 +31,19 @@
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light pb-3">TÀI KHOẢN CỦA TÔI</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Đăng nhập/Tạo mới tài khoản</a></li>
-                    <li><a class="text-decoration-none" href="#">Chi tiết tài khoản</a></li>
-                    <li><a class="text-decoration-none" href="#">Thay đổi địa chỉ khách hàng</a></li>
-                    <li><a class="text-decoration-none" href="#">Lịch sử mua hàng</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=login">Đăng nhập/Tạo mới tài khoản</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=account">Chi tiết tài khoản</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=account">Thay đổi địa chỉ khách hàng</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=account&action=purchase_history">Lịch sử mua hàng</a></li>
                 </ul>
             </div>
 
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light pb-3">Further Info</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Trang chủ</a></li>
-                    <li><a class="text-decoration-none" href="#">Giới thiệu Bookly</a></li>
-                    <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                    <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                    <li><a class="text-decoration-none" href="#">Contact</a></li>
+                    <li><a class="text-decoration-none" href="index.php">Trang chủ</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=about">Giới thiệu Bookly</a></li>
+                    <li><a class="text-decoration-none" href="index.php?controller=contact">Liên hệ</a></li>
                 </ul>
             </div>
 

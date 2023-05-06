@@ -31,7 +31,7 @@
                                                                 <div class="col-md-2"><img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="media-object img-thumbnail" alt="Ảnh sản phẩm" /></div>
                                                                 <div class="col-md-8 d-flex justify-content-sm-between align-items-center">
                                                                     <div>
-                                                                        <span><strong>Tên sản phẩm: Hiểu Về Trái Tim (Tái Bản 2023)</strong></span><br />
+                                                                        <span><strong><a class="text-black fw-bold" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a></strong></span><br />
                                                                         <span class="label label-info">Danh mục: Văn Học</span><br />
                                                                         <span class="label label-info">Số lượng: x<?php echo $orderOdetail['amount']; ?></span><br />
                                                                     </div>

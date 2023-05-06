@@ -154,22 +154,33 @@
                                                 <p class="text-black float-start"><span class="text-black me-3">Tổng Cộng :</span><span style="font-size: 25px;"><?php echo $order['order_total']; ?> đ</span></p>
                                             </div>
                                         </div>
-                                        <form class="tm-edit-product-form" action="index.php?controller=order&action=updated_status" method="post">
-                                            <input name="order_id" type="hidden" value="<?= $order['order_id'] ?>">
-                                            <hr>
-                                            <div class="row justify-content-between">
-                                                <div class="col-xl-2">
-                                                    <select class="form-select" name="order_status" aria-label="Default select example">
-                                                        <option value="0" <?php if ($order['order_status'] == 0) echo 'selected'; ?>>Pending</option>
-                                                        <option value="1" <?php if ($order['order_status'] == 1) echo 'selected'; ?>>Paid</option>
-                                                        <option value="2" <?php if ($order['order_status'] == 2) echo 'selected'; ?>>Cancelled</option>
-                                                    </select>
+
+                                        <?php
+                                        if ($order['order_status'] == '0') {
+
+
+                                        ?>
+                                            <form class="tm-edit-product-form" action="index.php?controller=order&action=updated_status" method="post">
+                                                <input name="order_id" type="hidden" value="<?= $order['order_id'] ?>">
+                                                <!-- <input name="order_status" type="hidden" value="<?= $order['order_status'] ?>"> -->
+                                                <hr>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-xl-2">
+                                                        <select class="form-select" name="order_status" aria-label="Default select example">
+                                                            <option value="0" <?php if ($order['order_status'] == 0) echo 'selected'; ?>>Pending</option>
+                                                            <option value="1" <?php if ($order['order_status'] == 1) echo 'selected'; ?>>Paid</option>
+                                                            <option value="2" <?php if ($order['order_status'] == 2) echo 'selected'; ?>>Cancelled</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-2">
+                                                        <button class="btn btn-success text-capitalize text-white">Cập Nhật</button>
+                                                    </div>
                                                 </div>
-                                                <div class="col-xl-2">
-                                                    <button class="btn btn-success text-capitalize text-white">Cập Nhật</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+
+                                        <?php
+                                        }
+                                        ?>
 
                                     </div>
                                 </div>

@@ -59,21 +59,32 @@ function update_password()
 {
     if (isset($_POST['sbmpassword'])) {
         $account_id = $_POST['account_id'];
+        $orpassword = $_POST['orpassword'];
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
-        if ($password != $repassword) {
-            $msg = "Mật khẩu không khớp vui lòng nhập lại";
+        include_once './connect/openConnect.php';
+        // Sử dụng prepared statement để tránh SQL injection
+        $stmt = mysqli_prepare($connect, "SELECT * FROM tbl_account WHERE account_id=? AND password=?");
+        mysqli_stmt_bind_param($stmt, "is", $account_id, $orpassword);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if (mysqli_num_rows($result) == 0) {
+            $msg = "Mật khẩu cũ không khớp";
             echo "<script>alert('$msg');window.history.back();</script>";
+            return;
+        } elseif ($password != $repassword) {
+            $msg = "Mật khẩu mới không khớp vui lòng nhập lại";
+            echo "<script>alert('$msg');window.history.back();</script>";
+            return;
         } else {
-            include_once './connect/openConnect.php';
-            $sql = "UPDATE tbl_account SET
-                            password = '$password',
-                            updated_date = now()
-                            WHERE account_id = $account_id";
-            mysqli_query($connect, $sql);
+            // Sử dụng prepared statement để tránh SQL injection
+            $stmt = mysqli_prepare($connect, "UPDATE tbl_account SET password=?, updated_date=now() WHERE account_id=?");
+            mysqli_stmt_bind_param($stmt, "si", $password, $account_id);
+            mysqli_stmt_execute($stmt);
             include_once './connect/closeConnect.php';
             $msg = "Cập nhật mật khẩu cá nhân thành công!";
             echo "<script>alert('$msg');window.history.back();</script>";
+            return;
         }
     }
 }
@@ -143,18 +154,38 @@ function order_detail()
 function updated_status()
 {
 
-    $order_id = $_POST['order_id'];
-    $order_status = $_POST['order_status'];
-
+    $order_id = $_GET['order_id'];
     include_once './connect/openConnect.php';
-    $sql = "UPDATE tbl_order SET
-                            order_status = '$order_status',
-                            updated_date = now()
-                            WHERE order_id = $order_id";
-    mysqli_query($connect, $sql);
-    include_once './connect/closeConnect.php';
-    $msg = "Cập nhật đơn hàng thành công";
-    echo "<script>alert('$msg');window.history.back();</script>";
+    // Thực hiện truy vấn kiểm tra trạng thái đơn hàng
+    $sql = "SELECT * FROM tbl_order WHERE order_id='$order_id' AND order_status = 2";
+    $result = mysqli_query($connect, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('Đơn hàng đã được hủy bởi Admin');window.history.back();</script>";
+        return;
+    } else {
+        $sql = "SELECT * FROM tbl_order WHERE order_id='$order_id' AND order_status = 1";
+        $result = mysqli_query($connect, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Đơn hàng đã được duyệt Admin');window.history.back();</script>";
+            return;
+        } else {
+            // Nếu không có kết quả trả về thì tiếp tục thực hiện các công việc khác
+            // ...
+            // Update the order record
+            $order_status = 2;
+            $sqlUpdate = "UPDATE tbl_order SET
+                    order_status = '$order_status',
+                    updated_date = now()
+                    WHERE order_id = $order_id";
+            mysqli_query($connect, $sqlUpdate);
+
+            include_once './connect/closeConnect.php';
+
+            $msg = "Hủy đơn hàng thành công";
+            echo "<script>alert('$msg');window.history.back();</script>";
+        }
+    }
 }
 
 

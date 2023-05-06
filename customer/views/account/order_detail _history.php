@@ -4,7 +4,7 @@
 
             <div class="row g-3 mb-4 align-items-center justify-content-between">
                 <div class="col-auto">
-                    <h1 class="app-page-title mb-0">Cập Nhật Hóa Đơn</h1>
+                    <h1 class="app-page-title mb-0">Chi Tiết Hóa Đơn</h1>
                 </div>
                 <div class="col-auto">
                     <div class="page-utilities">
@@ -113,7 +113,7 @@
                                                                             <div class='d-flex align-items-center'>
                                                                                 <img src="../admin/assets/img/uploads/<?php echo $product['img']; ?>" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
                                                                                 <div class='flex-column ms-4' style="max-width: 70vh;">
-                                                                                    <p class='mb-2 truncate-author'><?php echo $product['product_name']; ?></p>
+                                                                                    <p class='mb-2 truncate-author'><a class="text-black" href="index.php?controller=shop&action=product_detail&product_id=<?php echo "$product[product_id]" ?>"><?php echo $product['product_name']; ?></a> </p>
                                                                                     <?php
                                                                                     foreach ($array['authors'] as $author) {
                                                                                         if ($author['author_id'] == $product['author_id']) {

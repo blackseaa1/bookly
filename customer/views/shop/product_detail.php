@@ -22,6 +22,8 @@
         <div class="container pb-5">
             <?php
             foreach ($array['products'] as $product) {
+                // echo "$product[product_id]";
+                // echo " $array[amount]";
             ?>
                 <div class="row">
 
@@ -110,23 +112,55 @@
                                     <input name="product_id" type="hidden" value="<?= $product['product_id'] ?>">
                                     <div class="row">
                                         <div class="col-auto">
-                                            <ul class="list-inline pb-3">
-                                                <li class="list-inline-item text-right">
-                                                    Quantity
-                                                    <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                                                </li>
-                                                <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                                                <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                                <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
-                                            </ul>
+                                            <!-- <form method="post" action="index.php?controller=cart&action=shop_now" class="d-flex">
+                                                <input type="hidden" name="product_id" value="<?php echo "$product[product_id]" ?>">
+
+                                                <ul class="list-inline pb-3">
+                                                    <li class="list-inline-item text-right">
+                                                        Quantity
+                                                        <input type="hidden" id="product-quanity" value="1">
+                                                    </li>
+
+
+
+                                                    <a class="btn btn-success" onclick='this.parentNode.querySelector(" input[type=number]").stepDown()'>-</a>
+                                                    <li class="list-inline-item"><input id='form1' min='0' name='<?= $product['product_id'] ?>' value='<?php echo "$" ?>' type='number' class='form-control form-control-sm' style='width: 50px;' /></li>
+                                                    <a class="btn btn-success" onclick='this.parentNode.querySelector(" input[type=number]").stepUp()'>+</a>
+
+                                                    <button type="submit" name="update_cart" value="update" class="text-info bg-white  ms-4" title="Đồng bộ số lượng">
+                                                        Mua -->
+                                            <!-- </button> -->
+                                            <!-- <a href="index.php?controller=cart&action=shop_now&product_id=<?php echo "$product[product_id]" ?>" class="btn btn-success btn-lg fw-bold" value="buy">Mua</a> -->
+
+                                            <!-- </ul> -->
+                                            <!-- </form> -->
+                                            <!-- <form method="post" action="index.php?controller=cart&action=shop_now" class="d-flex">
+                                                <ul class="list-inline pb-3">
+                                                    <li class="list-inline-item text-right">
+                                                        Quantity
+                                                        <input type="hidden" name="product_id" value="<?php echo "$product[product_id]" ?>">
+                                                        <input type="hidden" name="amount" id="product-quanity" value="<?php echo " $array[amount]"; ?>">
+                                                    </li>
+                                                    <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                                    <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                                    <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                                    <button type="submit" class="text-info bg-white  ms-4">
+                                                        Mua
+                                                    </button>
+                                                </ul>
+                                            </form> -->
                                         </div>
+
                                     </div>
                                     <div class="row pb-3">
                                         <div class="col d-grid">
-                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Mua</button>
-                                        </div>
+<!-- 
+                                            <a href="index.php?controller=cart&action=shop_now&product_id=<?php echo "$product[product_id]" ?>" class="btn btn-success btn-lg fw-bold" value="buy">Mua ngay</a>
+                                        </div> -->
+                                        <!-- </form> -->
+
                                         <div class="col d-grid">
-                                            <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Thêm vào giỏ hàng</button>
+                                            <a href="index.php?controller=cart&action=add_cart&product_id=<?php echo "$product[product_id]" ?>" class="btn btn-success btn-lg fw-bold" value="addtocard">Thêm vào giỏ hàng</a>
                                         </div>
                                     </div>
                                 </form>
@@ -145,4 +179,3 @@
     <!-- Start Article -->
 
     <!-- End Article -->
-    

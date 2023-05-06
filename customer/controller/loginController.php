@@ -36,7 +36,7 @@ switch ($action) {
         include_once 'models/loginModel.php';
         //            quay về form đăng nhập
         echo '<script>
-                    location.href = "index.php?";
+        location.href = "index.php?controller=login&action=login";
                 </script>';
         break;
 }

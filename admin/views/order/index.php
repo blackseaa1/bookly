@@ -68,7 +68,7 @@
   										<?php
 											foreach ($array['infor'] as $order) { ?>
   											<tr>
-  												<td class="cell"><?= $order['order_id'] ?></td>
+  												<td class="cell">#<?= $order['order_id'] ?></td>
   												<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
   												<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
   												<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
@@ -155,12 +155,12 @@
   									</thead>
   									<tbody>
   										<?php
-											$id = 1;
+
 											foreach ($array['infor'] as $order) {
 												if ($order['order_status'] == '1') {
 											?>
   												<tr>
-  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell">#<?= $order['order_id'] ?></td>
   													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
   													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
   													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
@@ -244,11 +244,12 @@
   									</thead>
   									<tbody>
   										<?php
-											$id = 1;
+
 											foreach ($array['infor'] as $order) {
-												if ($order['order_status'] == '0') { ?>
+												if ($order['order_status'] == '0') {
+											?>
   												<tr>
-  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell">#<?= $order['order_id'] ?></td>
   													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
   													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
   													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>
@@ -332,11 +333,11 @@
   									</thead>
   									<tbody>
   										<?php
-											$id = 1;
+
 											foreach ($array['infor'] as $order) {
 												if ($order['order_status'] == '2') { ?>
   												<tr>
-  													<td class="cell"><?php echo $id++; ?></td>
+  													<td class="cell">#<?= $order['order_id'] ?></td>
   													<td class="cell"><?php echo $order['order_recipient_name']; ?></td>
   													<td class="cell"><span class="truncate"><?php echo $order['order_recipient_address']; ?></span></td>
   													<td class="cell"><span><?php echo $order['created_date']; ?></span></td>

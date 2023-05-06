@@ -1,21 +1,29 @@
 <?php
 function add_to_cart()
 {
-    //        Lấy được id của sản phẩm vừa được thêm vào
+    // Lấy được id của sản phẩm vừa được thêm vào
     $product_id = $_GET['product_id'];
-    //        Lưu lên session id sản phầm và số lượng mặc định là 1
-    //        Kiểm tra xem giỏ hàng đã tồn tại hay chưa
+    $amount = 1;
+
+    // Lưu lên session id sản phẩm và số lượng
+    // Kiểm tra xem giỏ hàng đã tồn tại hay chưa
     if (isset($_SESSION['cart'])) {
         if (isset($_SESSION['cart'][$product_id])) {
-            $_SESSION['cart'][$product_id]++;
+            $_SESSION['cart'][$product_id] += $amount;
         } else {
-            $_SESSION['cart'][$product_id] = 1;
+            $_SESSION['cart'][$product_id] = $amount;
         }
     } else {
         $_SESSION['cart'] = array();
-        $_SESSION['cart'][$product_id] = 1;
+        $_SESSION['cart'][$product_id] = $amount;
     }
+
+    // Hiển thị thông báo thành công
+    $msg = "Thêm sản phẩm vào rỏ hàng thành công";
+    echo "<script>alert('$msg');</script>";
 }
+
+
 
 function view_cart()
 {
@@ -34,6 +42,7 @@ function view_cart()
             $products = mysqli_query($connect, $sql);
             foreach ($products as $product) {
                 $cart[$product_id]['product_name'] = $product['product_name'];
+                $cart[$product_id]['product_id'] = $product['product_id'];
                 $cart[$product_id]['author_name'] = $product['author_name'];
                 $cart[$product_id]['category_name'] = $product['category_name'];
                 $cart[$product_id]['img'] = $product['img'];
@@ -55,6 +64,10 @@ function view_cart()
     $infor['cart'] = $cart;
     return $infor;
 }
+
+
+
+
 //    function thay đổi số lượng trong giỏ hàng
 function change_amount()
 {

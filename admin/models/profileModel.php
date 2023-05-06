@@ -59,24 +59,37 @@ function update_password()
 {
     if (isset($_POST['sbmpassword'])) {
         $account_id = $_POST['account_id'];
+        $orpassword = $_POST['orpassword'];
         $password = $_POST['password'];
         $repassword = $_POST['repassword'];
-        if ($password != $repassword) {
-            $msg = "Mật khẩu không khớp vui lòng nhập lại";
+        include_once './connect/openConnect.php';
+        // Sử dụng prepared statement để tránh SQL injection
+        $stmt = mysqli_prepare($connect, "SELECT * FROM tbl_account WHERE account_id=? AND password=?");
+        mysqli_stmt_bind_param($stmt, "is", $account_id, $orpassword);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if (mysqli_num_rows($result) == 0) {
+            $msg = "Mật khẩu cũ không khớp";
             echo "<script>alert('$msg');window.history.back();</script>";
+            return;
+        } elseif ($password != $repassword) {
+            $msg = "Mật khẩu mới không khớp vui lòng nhập lại";
+            echo "<script>alert('$msg');window.history.back();</script>";
+            return;
         } else {
-            include_once './connect/openConnect.php';
-            $sql = "UPDATE tbl_account SET
-                            password = '$password',
-                            updated_date = now()
-                            WHERE account_id = $account_id";
-            mysqli_query($connect, $sql);
+            // Sử dụng prepared statement để tránh SQL injection
+            $stmt = mysqli_prepare($connect, "UPDATE tbl_account SET password=?, updated_date=now() WHERE account_id=?");
+            mysqli_stmt_bind_param($stmt, "si", $password, $account_id);
+            mysqli_stmt_execute($stmt);
             include_once './connect/closeConnect.php';
             $msg = "Cập nhật mật khẩu cá nhân thành công!";
             echo "<script>alert('$msg');window.history.back();</script>";
+            return;
         }
     }
 }
+
+
 
 switch ($action) {
 

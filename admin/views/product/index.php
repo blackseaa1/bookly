@@ -80,7 +80,7 @@
  													<span class="truncate-author"><?php echo $product['author_name']; ?></span>
  												</td>
  												<td class="cell text-lg-center">
- 													<span class="truncate-quantity"><?php echo $product['quantity']; ?></span>
+ 													<span class="truncate-quantity">x<?php echo $product['quantity']; ?></span>
  												</td>
  												<td class="cell text-lg-center">
  													<span class="truncate-price p-2"><?php echo $product['price']; ?>đ</span>
